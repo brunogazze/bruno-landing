@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruno Gazze — Analista Financiero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08080e;
+      --bg2: #0d0d17;
+      --card: #10101a;
+      --card-h: #141420;
+      --b: #1c1c2e;
+      --bl: #252538;
+      --accent: #4f9cf9;
+      --a-dim: rgba(79,156,249,.12);
+      --a2: #a78bfa;
+      --green: #22d3a5;
+      --g-dim: rgba(34,211,165,.1);
+      --red: #f87171;
+      --r-dim: rgba(248,113,113,.1);
+      --gold: #f59e0b;
+      --txt: #e2e8f0;
+      --dim: #94a3b8;
+      --muted: #475569;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--txt); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bl); border-radius: 99px; }
+    a { text-decoration: none; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2rem;
+      background: rgba(8,8,14,.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--b);
+    }
+    .nav-logo { font-family: var(--mono); font-size: .82rem; color: var(--accent); letter-spacing: .04em; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { font-size: .82rem; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--txt); }
+    .nav-cta { font-size: .8rem; font-weight: 600; color: var(--accent); border: 1px solid rgba(79,156,249,.4); padding: .38rem .95rem; border-radius: 6px; transition: background .2s; }
+    .nav-cta:hover { background: var(--accent); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 21px; height: 2px; background: var(--dim); border-radius: 2px; }
+
+    /* ─── SHARED ─── */
+    section { padding: 6rem 2rem; }
+    .inner { max-width: 1100px; margin: 0 auto; }
+    .s-label { font-family: var(--mono); font-size: .68rem; color: var(--accent); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .6rem; }
+    .s-title { font-size: clamp(1.7rem, 3.8vw, 2.5rem); font-weight: 750; letter-spacing: -.025em; line-height: 1.12; margin-bottom: .9rem; }
+    .s-desc { color: var(--dim); font-size: .95rem; line-height: 1.8; max-width: 580px; }
+    .divider { border: none; border-top: 1px solid var(--b); margin: 4rem 0; }
+    .pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: var(--mono); font-size: .68rem; letter-spacing: .05em;
+      padding: .22rem .65rem; border-radius: 99px;
+      border: 1px solid var(--bl); color: var(--muted);
+    }
+    .pill.blue { background: var(--a-dim); border-color: rgba(79,156,249,.25); color: var(--accent); }
+    .pill.green { background: var(--g-dim); border-color: rgba(34,211,165,.25); color: var(--green); }
+    .pill.red { background: var(--r-dim); border-color: rgba(248,113,113,.25); color: var(--red); }
+    .pill.gold { background: rgba(245,158,11,.08); border-color: rgba(245,158,11,.25); color: var(--gold); }
+    .val-up { color: var(--green); }
+    .val-down { color: var(--red); }
+    .val-neutral { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 8rem 2rem 5rem; position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--b) 1px, transparent 1px), linear-gradient(90deg, var(--b) 1px, transparent 1px);
+      background-size: 58px 58px; opacity: .28;
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black, transparent);
+    }
+    .hero-glow {
+      position: absolute; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,156,249,.1) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--mono); font-size: .72rem; color: var(--accent);
+      background: var(--a-dim); border: 1px solid rgba(79,156,249,.22);
+      padding: .32rem .9rem; border-radius: 99px; margin-bottom: 1.5rem; letter-spacing: .06em;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 7px var(--green); animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .hero-name { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1; letter-spacing: -.04em; margin-bottom: 1rem; }
+    .hero-name span { background: linear-gradient(135deg, var(--accent) 30%, var(--a2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: clamp(.95rem, 2.2vw, 1.18rem); color: var(--dim); max-width: 560px; margin: 0 auto 2.5rem; }
+    .hero-sub strong { color: var(--txt); font-weight: 600; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-p { padding: .72rem 1.7rem; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; font-size: .88rem; transition: opacity .2s, transform .15s; box-shadow: 0 4px 22px rgba(79,156,249,.28); }
+    .btn-p:hover { opacity: .86; transform: translateY(-2px); }
+    .btn-s { padding: .72rem 1.7rem; border-radius: 8px; border: 1px solid var(--bl); color: var(--dim); font-weight: 500; font-size: .88rem; transition: border-color .2s, color .2s, background .2s; }
+    .btn-s:hover { border-color: var(--accent); color: var(--accent); background: var(--a-dim); }
+    .hero-stats { display: flex; justify-content: center; gap: 3.5rem; margin-top: 4.5rem; flex-wrap: wrap; }
+    .stat-num { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+    .stat-lbl { font-size: .72rem; color: var(--muted); margin-top: .12rem; }
+
+    /* ─── INTRO ─── */
+    #intro { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
+    .intro-text .s-desc { max-width: 100%; }
+    .intro-quote {
+      margin-top: 1.75rem; padding: 1.25rem 1.5rem;
+      background: var(--card); border: 1px solid var(--b);
+      border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0;
+      font-size: .92rem; color: var(--dim); line-height: 1.75; font-style: italic;
+    }
+    .pilares { display: flex; flex-direction: column; gap: .85rem; }
+    .pilar {
+      background: var(--card); border: 1px solid var(--b); border-radius: 12px;
+      padding: 1.1rem 1.35rem; display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color .2s, background .2s;
+    }
+    .pilar:hover { border-color: var(--bl); background: var(--card-h); }
+    .pilar-icon { font-size: 1.25rem; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,.03); flex-shrink: 0; }
+    .pilar-title { font-size: .88rem; font-weight: 600; margin-bottom: .2rem; }
+    .pilar-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+    .edu-block {
+      margin-top: 2.5rem; padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(79,156,249,.06), rgba(167,139,250,.04));
+      border: 1px solid var(--b); border-radius: 14px;
+    }
+    .edu-block-title { font-size: .88rem; font-weight: 700; margin-bottom: .75rem; color: var(--accent); }
+    .edu-steps { display: flex; flex-direction: column; gap: .55rem; }
+    .edu-step { display: flex; gap: .85rem; align-items: flex-start; }
+    .edu-num { font-family: var(--mono); font-size: .68rem; color: var(--accent); background: var(--a-dim); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: .12rem; }
+    .edu-step p { font-size: .82rem; color: var(--dim); line-height: 1.6; }
+    .edu-step strong { color: var(--txt); font-weight: 600; }
+
+    /* ─── REPORTES DIARIOS ─── */
+    #reportes { background: var(--bg); }
+    .reportes-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .reporte-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.1rem; }
+    .reporte-card {
+      background: var(--card); border: 1px solid var(--b); border-radius: 14px;
+      overflow: hidden; transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .reporte-card:hover { border-color: var(--bl); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+    .reporte-card.pinned { border-color: rgba(79,156,249,.3); background: linear-gradient(145deg, #10101a, #121220); }
+    .reporte-head {
+      padding: 1rem 1.35rem; border-bottom: 1px solid var(--b);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .reporte-date { font-family: var(--mono); font-size: .7rem; color: var(--muted); }
+    .reporte-body { padding: 1.25rem 1.35rem; }
+    .reporte-title { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; line-height: 1.35; }
+    .reporte-summary { font-size: .8rem; color: var(--dim); line-height: 1.7; margin-bottom: 1rem; }
+    .reporte-minis { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .reporte-mini {
+      font-family: var(--mono); font-size: .68rem;
+      background: rgba(255,255,255,.03); border: 1px solid var(--b);
+      border-radius: 6px; padding: .28rem .6rem;
+      display: flex; flex-direction: column; align-items: center; min-width: 64px;
+    }
+    .reporte-mini-lbl { color: var(--muted); font-size: .6rem; margin-bottom: .1rem; }
+    .reporte-footer { padding: .75rem 1.35rem; border-top: 1px solid var(--b); display: flex; align-items: center; justify-content: space-between; }
+    .read-link { font-size: .75rem; color: var(--accent); font-weight: 500; transition: gap .15s; display: flex; align-items: center; gap: .3rem; }
+    .read-link:hover { gap: .55rem; }
+
+    /* ─── RADAR SEMANAL ─── */
+    #radar-semanal { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); }
+    .radar-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .radar-reports { display: flex; flex-direction: column; gap: 1rem; }
+    .radar-card {
+      background: var(--card); border: 1px solid var(--b); border-radius: 14px;
+      display: grid; grid-template-columns: 1fr auto; align-items: center;
+      padding: 1.35rem 1.5rem; gap: 1.5rem;
+      transition: border-color .2s, background .2s;
+    }
+    .radar-card:hover { border-color: var(--bl); background: var(--card-h); }
+    .radar-card.latest { border-color: rgba(79,156,249,.28); }
+    .radar-card-title { font-size: .95rem; font-weight: 700; margin-bottom: .35rem; }
+    .radar-card-desc { font-size: .8rem; color: var(--dim); line-height: 1.6; }
+    .radar-topics { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .75rem; }
+    .radar-topic { font-family: var(--mono); font-size: .62rem; color: var(--muted); border: 1px solid var(--b); border-radius: 99px; padding: .16rem .55rem; }
+    .radar-card-right { text-align: right; flex-shrink: 0; }
+    .radar-week { font-family: var(--mono); font-size: .68rem; color: var(--muted); margin-bottom: .5rem; }
+    .radar-btn {
+      font-size: .78rem; font-weight: 600; color: var(--accent);
+      border: 1px solid rgba(79,156,249,.3); border-radius: 7px;
+      padding: .4rem .9rem; transition: background .2s;
+      white-space: nowrap; cursor: pointer; background: none;
+    }
+    .radar-btn:hover { background: var(--a-dim); }
+
+    /* ─── INFORMES DE EMPRESAS ─── */
+    #informes { background: var(--bg); }
+    .informes-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .filter-row { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .75rem; }
+    .filter-btn {
+      font-family: var(--mono); font-size: .68rem; padding: .24rem .72rem;
+      border-radius: 99px; border: 1px solid var(--bl); color: var(--muted);
+      cursor: pointer; background: none; transition: all .18s;
+    }
+    .filter-btn.active { background: var(--a-dim); border-color: rgba(79,156,249,.3); color: var(--accent); }
+    .filter-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+    .empresas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .empresa-card {
+      background: var(--card); border: 1px solid var(--b); border-radius: 13px;
+      overflow: hidden; transition: border-color .22s, transform .18s, box-shadow .2s;
+    }
+    .empresa-card:hover { border-color: var(--bl); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.38); }
+    .empresa-head {
+      padding: 1rem 1.3rem; border-bottom: 1px solid var(--b);
+      display: flex; align-items: center; gap: .7rem;
+    }
+    .ticker {
+      font-family: var(--mono); font-size: .72rem; font-weight: 700;
+      padding: .28rem .6rem; border-radius: 6px;
+      background: var(--a-dim); color: var(--accent);
+      border: 1px solid rgba(79,156,249,.18); letter-spacing: .04em;
+    }
+    .ticker.grn { background: var(--g-dim); color: var(--green); border-color: rgba(34,211,165,.2); }
+    .ticker.pur { background: rgba(167,139,250,.1); color: var(--a2); border-color: rgba(167,139,250,.2); }
+    .ticker.gld { background: rgba(245,158,11,.08); color: var(--gold); border-color: rgba(245,158,11,.2); }
+    .ticker.red { background: var(--r-dim); color: var(--red); border-color: rgba(248,113,113,.2); }
+    .empresa-sector { font-family: var(--mono); font-size: .66rem; color: var(--muted); margin-left: auto; }
+    .empresa-name { font-size: .95rem; font-weight: 700; margin-bottom: .15rem; }
+    .empresa-date { font-family: var(--mono); font-size: .65rem; color: var(--muted); }
+    .empresa-body { padding: 1.1rem 1.3rem; }
+    .empresa-desc { font-size: .8rem; color: var(--dim); line-height: 1.65; margin-bottom: .9rem; }
+    .empresa-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; }
+    .m { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 7px; padding: .45rem .65rem; }
+    .m-lbl { font-family: var(--mono); font-size: .58rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .m-val { font-size: .86rem; font-weight: 600; margin-top: .08rem; }
+    .empresa-footer { padding: .7rem 1.3rem; border-top: 1px solid var(--b); display: flex; align-items: center; justify-content: space-between; }
+    .rating { font-size: .72rem; font-family: var(--mono); display: flex; align-items: center; gap: .4rem; }
+    .rdot { width: 6px; height: 6px; border-radius: 50%; }
+    .rdot.b { background: var(--green); box-shadow: 0 0 5px var(--green); }
+    .rdot.n { background: var(--gold); box-shadow: 0 0 5px var(--gold); }
+    .rdot.r { background: var(--red); box-shadow: 0 0 5px var(--red); }
+
+    /* ─── RADAR VISUAL ─── */
+    #radar-visual { background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%); }
+    .radar-visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 2.5rem; }
+    .rv-panel { background: var(--card); border: 1px solid var(--b); border-radius: 14px; overflow: hidden; }
+    .rv-panel.wide { grid-column: 1 / -1; }
+    .rv-panel.third { grid-column: span 1; }
+    .rv-panel-head { padding: .75rem 1.25rem; border-bottom: 1px solid var(--b); display: flex; align-items: center; justify-content: space-between; }
+    .rv-panel-title { font-size: .78rem; font-weight: 600; display: flex; align-items: center; gap: .5rem; }
+    .rv-panel-title span { font-family: var(--mono); font-size: .6rem; color: var(--muted); }
+    .rv-body { padding: 1rem 1.25rem; }
+    .rv-update { font-family: var(--mono); font-size: .6rem; color: var(--muted); display: flex; align-items: center; gap: .35rem; }
+    .rv-update::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px var(--green); }
+    .rv-sublabel { font-size: .65rem; color: var(--muted); font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .6rem; margin-top: .85rem; font-weight: 600; }
+    .rv-sublabel:first-child { margin-top: 0; }
+
+    /* Índices */
+    .idx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; }
+    .idx-item { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 9px; padding: .75rem .9rem; text-align: center; transition: border-color .2s; }
+    .idx-item:hover { border-color: var(--bl); }
+    .idx-name { font-family: var(--mono); font-size: .65rem; color: var(--muted); margin-bottom: .25rem; }
+    .idx-val { font-size: 1rem; font-weight: 700; margin-bottom: .12rem; }
+    .idx-chg { font-family: var(--mono); font-size: .72rem; font-weight: 600; }
+
+    /* Sectores heatmap */
+    .sector-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap: .45rem; }
+    .sector-cell { border-radius: 8px; padding: .65rem .5rem; text-align: center; font-size: .72rem; transition: opacity .2s; }
+    .sector-cell:hover { opacity: .82; }
+    .sector-name { font-weight: 600; margin-bottom: .18rem; }
+    .sector-chg { font-family: var(--mono); font-size: .68rem; }
+    .sc-vup { background: rgba(34,211,165,.22); border: 1px solid rgba(34,211,165,.3); }
+    .sc-up  { background: rgba(34,211,165,.1);  border: 1px solid rgba(34,211,165,.18); }
+    .sc-flat{ background: rgba(255,255,255,.03); border: 1px solid var(--b); }
+    .sc-dn  { background: rgba(248,113,113,.1);  border: 1px solid rgba(248,113,113,.18); }
+    .sc-vdn { background: rgba(248,113,113,.22); border: 1px solid rgba(248,113,113,.3); }
+
+    /* Market Breadth */
+    .breadth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .breadth-item { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 8px; padding: .65rem .85rem; }
+    .breadth-lbl { font-family: var(--mono); font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .4rem; }
+    .breadth-bar { height: 5px; border-radius: 99px; background: var(--b); overflow: hidden; margin-bottom: .4rem; }
+    .breadth-fill { height: 100%; border-radius: 99px; }
+    .breadth-nums { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .68rem; }
+
+    /* Futures */
+    .futures-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .fut-item { display: flex; justify-content: space-between; align-items: center; padding: .5rem .75rem; background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 8px; }
+    .fut-name { font-size: .78rem; font-weight: 600; }
+    .fut-right { text-align: right; }
+    .fut-val { font-family: var(--mono); font-size: .82rem; font-weight: 700; }
+    .fut-chg { font-family: var(--mono); font-size: .65rem; }
+
+    /* Gainers / Losers */
+    .mover-row { display: flex; align-items: center; justify-content: space-between; padding: .5rem .7rem; border-radius: 8px; background: rgba(255,255,255,.02); border: 1px solid var(--b); margin-bottom: .38rem; }
+    .mover-tick { font-family: var(--mono); font-size: .72rem; font-weight: 700; }
+    .mover-name { font-size: .68rem; color: var(--muted); margin-top: .04rem; }
+    .mover-chg { font-family: var(--mono); font-size: .78rem; font-weight: 700; }
+
+    /* Forex */
+    .forex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .fx-item { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 8px; padding: .6rem .85rem; display: flex; justify-content: space-between; align-items: center; }
+    .fx-pair { font-family: var(--mono); font-size: .72rem; font-weight: 600; color: var(--txt); }
+    .fx-right { text-align: right; }
+    .fx-val { font-family: var(--mono); font-size: .82rem; font-weight: 700; }
+    .fx-chg { font-family: var(--mono); font-size: .62rem; }
+
+    /* Treasuries */
+    .tsy-row { display: flex; align-items: center; justify-content: space-between; padding: .55rem .8rem; background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 8px; margin-bottom: .4rem; }
+    .tsy-name { font-family: var(--mono); font-size: .72rem; font-weight: 600; }
+    .tsy-desc { font-size: .65rem; color: var(--muted); margin-top: .04rem; }
+    .tsy-right { text-align: right; }
+    .tsy-yield { font-family: var(--mono); font-size: .9rem; font-weight: 700; }
+    .tsy-chg { font-family: var(--mono); font-size: .62rem; }
+    .curve-note { font-size: .72rem; color: var(--muted); margin-top: .75rem; padding: .55rem .85rem; background: rgba(167,139,250,.06); border: 1px solid rgba(167,139,250,.15); border-radius: 7px; }
+    .curve-note strong { color: var(--a2); }
+
+    /* Commodities */
+    .comm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: .5rem; }
+    .comm-item { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 9px; padding: .65rem .9rem; }
+    .comm-name { font-size: .7rem; font-weight: 600; margin-bottom: .1rem; }
+    .comm-val { font-family: var(--mono); font-size: .9rem; font-weight: 700; }
+    .comm-chg { font-family: var(--mono); font-size: .62rem; margin-top: .08rem; }
+
+    /* Calendars */
+    .cal-row { display: flex; align-items: flex-start; gap: .85rem; padding: .6rem .85rem; background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 8px; margin-bottom: .4rem; }
+    .cal-date { font-family: var(--mono); font-size: .62rem; color: var(--muted); min-width: 48px; margin-top: .18rem; }
+    .cal-title { font-size: .78rem; font-weight: 600; margin-bottom: .15rem; }
+    .cal-desc { font-size: .68rem; color: var(--muted); line-height: 1.45; }
+    .cal-impact { font-size: .6rem; font-family: var(--mono); padding: .15rem .45rem; border-radius: 99px; flex-shrink: 0; margin-top: .15rem; }
+    .imp-high { background: rgba(248,113,113,.15); color: var(--red); border: 1px solid rgba(248,113,113,.25); }
+    .imp-med  { background: rgba(245,158,11,.1); color: var(--gold); border: 1px solid rgba(245,158,11,.2); }
+    .imp-low  { background: rgba(255,255,255,.04); color: var(--muted); border: 1px solid var(--b); }
+
+    /* Argentina Panel */
+    .ar-dolar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: .5rem; }
+    .ar-dolar-item { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 9px; padding: .7rem .9rem; text-align: center; }
+    .ar-dolar-type { font-family: var(--mono); font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .35rem; }
+    .ar-dolar-val { font-family: var(--mono); font-size: 1rem; font-weight: 700; }
+    .ar-dolar-chg { font-family: var(--mono); font-size: .62rem; margin-top: .1rem; }
+    .ar-bond-row { display: flex; align-items: center; justify-content: space-between; padding: .5rem .75rem; background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 8px; margin-bottom: .38rem; }
+    .ar-bond-tick { font-family: var(--mono); font-size: .72rem; font-weight: 700; }
+    .ar-bond-desc { font-size: .65rem; color: var(--muted); }
+    .ar-bond-right { text-align: right; }
+    .ar-bond-yield { font-family: var(--mono); font-size: .82rem; font-weight: 700; }
+    .ar-bond-px { font-family: var(--mono); font-size: .62rem; color: var(--muted); }
+    .ar-rates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: .5rem; }
+    .ar-rate-item { background: rgba(255,255,255,.02); border: 1px solid var(--b); border-radius: 9px; padding: .65rem .9rem; }
+    .ar-rate-name { font-size: .72rem; font-weight: 600; margin-bottom: .1rem; }
+    .ar-rate-desc { font-size: .62rem; color: var(--muted); margin-bottom: .35rem; }
+    .ar-rate-val { font-family: var(--mono); font-size: .9rem; font-weight: 700; color: var(--green); }
+    .ar-rate-sub { font-family: var(--mono); font-size: .6rem; color: var(--muted); margin-top: .05rem; }
+
+    /* Disclaimer */
+    .radar-disclaimer { margin-top: 1.5rem; padding: .9rem 1.25rem; background: rgba(245,158,11,.05); border: 1px solid rgba(245,158,11,.15); border-radius: 10px; font-size: .75rem; color: var(--muted); line-height: 1.65; }
+    .radar-disclaimer strong { color: var(--gold); }
+
+    /* ─── CONTACTO ─── */
+    #contacto { background: var(--bg); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
+    .contact-services { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+    .service-item { background: var(--card); border: 1px solid var(--b); border-radius: 11px; padding: 1.1rem 1.3rem; transition: border-color .2s, background .2s; }
+    .service-item:hover { border-color: var(--bl); background: var(--card-h); }
+    .service-title { font-size: .88rem; font-weight: 700; margin-bottom: .3rem; display: flex; align-items: center; gap: .6rem; }
+    .service-title span { font-size: 1rem; }
+    .service-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+    .contact-links { margin-top: 1.75rem; display: flex; flex-direction: column; gap: .65rem; }
+    .c-link { display: flex; align-items: center; gap: .9rem; padding: .85rem 1.1rem; background: var(--card); border: 1px solid var(--b); border-radius: 10px; color: var(--txt); transition: border-color .2s, background .2s, transform .15s; }
+    .c-link:hover { border-color: var(--bl); background: var(--card-h); transform: translateX(4px); }
+    .c-icon { width: 34px; height: 34px; border-radius: 7px; background: rgba(255,255,255,.04); border: 1px solid var(--b); display: flex; align-items: center; justify-content: center; font-size: .95rem; flex-shrink: 0; }
+    .c-main { font-size: .85rem; font-weight: 500; }
+    .c-sub { font-size: .7rem; color: var(--muted); margin-top: .08rem; }
+    .c-arrow { margin-left: auto; color: var(--muted); font-size: .75rem; }
+    .contact-form { display: flex; flex-direction: column; gap: .85rem; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+    .f-grp { display: flex; flex-direction: column; gap: .3rem; }
+    .f-lbl { font-size: .75rem; color: var(--dim); font-weight: 500; }
+    .f-input, .f-select, .f-textarea {
+      background: var(--card); border: 1px solid var(--b); border-radius: 8px;
+      padding: .65rem .95rem; color: var(--txt); font-size: .85rem;
+      font-family: 'Inter', sans-serif; outline: none; resize: vertical; transition: border-color .2s;
+    }
+    .f-input:focus, .f-select:focus, .f-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,156,249,.07); }
+    .f-select { appearance: none; cursor: pointer; }
+    .f-textarea { min-height: 105px; }
+    .f-input::placeholder, .f-textarea::placeholder { color: var(--muted); }
+    .btn-submit { padding: .75rem 2rem; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; font-size: .88rem; border: none; cursor: pointer; transition: opacity .2s, transform .15s; box-shadow: 0 4px 20px rgba(79,156,249,.22); align-self: flex-start; }
+    .btn-submit:hover { opacity: .86; transform: translateY(-2px); }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(4,4,10,.88); backdrop-filter: blur(10px);
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 2rem 1rem; overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #0e0e1a; border: 1px solid #252538;
+      border-radius: 18px; width: 100%; max-width: 760px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.7);
+      transform: translateY(20px); transition: transform .28s;
+      margin-top: 2rem;
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-header {
+      padding: 1.5rem 2rem 1.25rem; border-bottom: 1px solid #1c1c2e;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+    }
+    .modal-header-left { flex: 1; }
+    .modal-tag { font-family: var(--mono); font-size: .65rem; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .45rem; }
+    .modal-title { font-size: 1.2rem; font-weight: 750; line-height: 1.2; letter-spacing: -.02em; }
+    .modal-meta { font-family: var(--mono); font-size: .68rem; color: var(--muted); margin-top: .4rem; }
+    .modal-close {
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(255,255,255,.05); border: 1px solid #1c1c2e;
+      color: var(--dim); cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .18s, color .18s;
+    }
+    .modal-close:hover { background: rgba(248,113,113,.12); color: var(--red); }
+    .modal-body { padding: 1.75rem 2rem 2rem; }
+    .modal-section { margin-bottom: 1.75rem; }
+    .modal-section:last-child { margin-bottom: 0; }
+    .modal-section-title {
+      font-family: var(--mono); font-size: .65rem; color: var(--accent);
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: .75rem;
+      padding-bottom: .5rem; border-bottom: 1px solid #1c1c2e;
+    }
+    .modal-text { font-size: .9rem; color: var(--dim); line-height: 1.8; }
+    .modal-text + .modal-text { margin-top: .85rem; }
+    .modal-text strong { color: var(--txt); font-weight: 600; }
+    .modal-metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .6rem; margin-top: .75rem; }
+    .modal-metric { background: rgba(255,255,255,.025); border: 1px solid #1c1c2e; border-radius: 9px; padding: .65rem .9rem; }
+    .modal-metric-lbl { font-family: var(--mono); font-size: .58rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
+    .modal-metric-val { font-family: var(--mono); font-size: .95rem; font-weight: 700; }
+    .modal-highlight {
+      padding: 1rem 1.25rem; border-radius: 10px;
+      background: rgba(79,156,249,.06); border: 1px solid rgba(79,156,249,.15);
+      font-size: .85rem; color: var(--dim); line-height: 1.75; margin-top: .85rem;
+    }
+    .modal-highlight strong { color: var(--accent); }
+    .modal-highlight.warn { background: rgba(245,158,11,.06); border-color: rgba(245,158,11,.18); }
+    .modal-highlight.warn strong { color: var(--gold); }
+    .modal-highlight.danger { background: rgba(248,113,113,.06); border-color: rgba(248,113,113,.18); }
+    .modal-highlight.danger strong { color: var(--red); }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--b); padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-family: var(--mono); font-size: .72rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: .75rem; color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: var(--txt); }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px) {
+      .intro-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .radar-visual-grid { grid-template-columns: 1fr; }
+      .rv-panel.wide { grid-column: auto; }
+      .idx-grid { grid-template-columns: repeat(2,1fr); }
+      .movers-cols { grid-template-columns: 1fr; }
+    }
+    @media(max-width:700px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 1.25rem; }
+      .empresas-grid { grid-template-columns: 1fr; }
+      .reporte-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .f-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      .radar-card { grid-template-columns: 1fr; }
+      .radar-card-right { text-align: left; }
+    }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">bruno.gazze</a>
+  <ul class="nav-links">
+    <li><a href="#intro">Sobre mí</a></li>
+    <li><a href="#reportes">Reportes</a></li>
+    <li><a href="#radar-semanal">Radar</a></li>
+    <li><a href="#informes">Empresas</a></li>
+    <li><a href="#radar-visual">Dashboard</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://twitter.com/brunogazze" class="nav-cta" target="_blank">Seguime en X →</a>
+  <button class="hamburger" onclick="toggleMenu(this)" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Analista Financiero · Creador de Contenido</div>
+    <h1 class="hero-name">Bruno <span>Gazze</span></h1>
+    <p class="hero-sub">
+      Análisis profundo de <strong>empresas innovadoras y tecnológicas</strong> en EE.UU. y Argentina.<br/>
+      Del gráfico al balance, sin saltear nada.
+    </p>
+    <div class="hero-btns">
+      <a href="#informes" class="btn-p">Ver Análisis de Empresas</a>
+      <a href="#contacto" class="btn-s">Nuestros Servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">360°</div>
+        <div class="stat-lbl">Visión de cada empresa</div>
+      </div>
+      <div>
+        <div class="stat-num">US + AR</div>
+        <div class="stat-lbl">Mercados cubiertos</div>
+      </div>
+      <div>
+        <div class="stat-num">Diario</div>
+        <div class="stat-lbl">Reporte de mercado</div>
+      </div>
+      <div>
+        <div class="stat-num">Semanal</div>
+        <div class="stat-lbl">Radar completo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTRO ── -->
+<section id="intro">
+  <div class="inner">
+    <div class="intro-grid">
+
+      <div class="intro-text fade-in">
+        <p class="s-label">// sobre mí</p>
+        <h2 class="s-title">Los números hablan solos.<br/>Yo los traduzco.</h2>
+        <p class="s-desc">
+          Soy analista financiero y creador de contenido especializado en el mercado de Estados Unidos
+          y Argentina, con foco en empresas innovadoras, tecnológicas y las nuevas tendencias que
+          están dando forma al futuro.
+        </p>
+        <p class="s-desc" style="margin-top:.9rem;">
+          Lo que me distingue es la visión completa: no me quedo sólo con el balance ni sólo con el
+          gráfico. Analizo la directiva, el sector, la competencia, la estructura del negocio y
+          cómo ganan dinero. Eso es lo que separa un análisis útil de uno genérico.
+        </p>
+        <blockquote class="intro-quote">
+          "El mercado no lo está viendo todavía. Eso es exactamente donde me paro a analizar. Porque
+          cuando todos lo ven, la oportunidad ya se fue."
+        </blockquote>
+
+        <div class="edu-block" style="margin-top:2rem;">
+          <div class="edu-block-title">¿Cómo ver el mercado e invertir mejor?</div>
+          <div class="edu-steps">
+            <div class="edu-step">
+              <div class="edu-num">1</div>
+              <p><strong>Entendé el negocio antes del precio.</strong> Antes de mirar si sube o baja, entendé cómo genera dinero la empresa. Si no podés explicarlo en dos oraciones, todavía no la entendiste.</p>
+            </div>
+            <div class="edu-step">
+              <div class="edu-num">2</div>
+              <p><strong>El contexto macro importa.</strong> Tasas, inflación, geopolítica, sector — ninguna empresa opera en el vacío. El contexto te dice si el viento está a favor o en contra.</p>
+            </div>
+            <div class="edu-step">
+              <div class="edu-num">3</div>
+              <p><strong>Los números no mienten, pero hay que saber leerlos.</strong> Revenue, márgenes, free cash flow, deuda. Cuatro métricas bien entendidas valen más que veinte mal interpretadas.</p>
+            </div>
+            <div class="edu-step">
+              <div class="edu-num">4</div>
+              <p><strong>Paciencia y convicción.</strong> Las mejores oportunidades requieren tiempo. El mercado suele tardar en reconocer lo que los fundamentos ya muestran. Esa brecha es donde está el retorno.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pilares fade-in" style="transition-delay:.12s">
+        <div class="pilar">
+          <div class="pilar-icon">📊</div>
+          <div>
+            <div class="pilar-title">Análisis Fundamental Profundo</div>
+            <div class="pilar-desc">Earnings, guidance, free cash flow, márgenes, deuda neta, capex. Cada número tiene un contexto y una historia detrás.</div>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">📈</div>
+          <div>
+            <div class="pilar-title">Análisis Técnico y Precio</div>
+            <div class="pilar-desc">Estructura de precio, niveles clave, volumen y tendencia. El gráfico cuenta lo que los balances aún no muestran.</div>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">🏭</div>
+          <div>
+            <div class="pilar-title">Modelo de Negocio y Competencia</div>
+            <div class="pilar-desc">Cómo genera dinero la empresa, sus ventajas competitivas, quiénes son sus rivales y por qué podría ganar o perder.</div>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">🌐</div>
+          <div>
+            <div class="pilar-title">Contexto Macro y Sectorial</div>
+            <div class="pilar-desc">Tasas, ciclos económicos, flujos de capital, política monetaria. El contexto lo cambia todo.</div>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">🇦🇷</div>
+          <div>
+            <div class="pilar-title">Mercado Argentino</div>
+            <div class="pilar-desc">Cedears, acciones locales, riesgo país, macro argentina — un mercado complejo que requiere análisis especializado.</div>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">✍️</div>
+          <div>
+            <div class="pilar-title">Contenido en X / Twitter</div>
+            <div class="pilar-desc">Hilos y análisis con hook potente, datos concretos y conclusión directa. Sin relleno, sin genérico.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── REPORTES DIARIOS ── -->
+<section id="reportes">
+  <div class="inner">
+    <div class="reportes-header">
+      <div>
+        <p class="s-label">// apertura de mercado · todos los días</p>
+        <h2 class="s-title">Reporte Diario de Mercado</h2>
+        <p class="s-desc">Cada mañana, antes de que abra Wall Street, te mando el resumen de lo que tenés que saber: índices, noticias clave, earnings del día y lo que puede mover el mercado.</p>
+      </div>
+      <span class="pill green">● Nuevo hoy</span>
+    </div>
+
+    <div class="reporte-grid">
+
+      <div class="reporte-card pinned fade-in">
+        <div class="reporte-head">
+          <div>
+            <span class="pill blue">📌 Más reciente</span>
+          </div>
+          <div class="reporte-date">Vie 04 Abr 2025</div>
+        </div>
+        <div class="reporte-body">
+          <div class="reporte-title">Mercado bajo presión: aranceles de Trump sacuden a Wall Street</div>
+          <div class="reporte-summary">El S&P 500 cerró con la mayor caída en 2 años luego del anuncio de aranceles generalizados del 10-25% a importaciones. El sector tech lideró las bajas, con semiconductores especialmente golpeados. El oro tocó nuevos máximos históricos como activo refugio. El mercado descuenta ahora mayor probabilidad de recesión.</div>
+          <div class="reporte-minis">
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">S&P 500</div>
+              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">-4.84%</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">Nasdaq</div>
+              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">-5.97%</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">VIX</div>
+              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+45.3</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">Oro</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+1.6%</div>
+            </div>
+          </div>
+        </div>
+        <div class="reporte-footer">
+          <span class="pill">Macro · Aranceles</span>
+          <a href="#" class="read-link" onclick="openModal('r1');return false;">Leer completo →</a>
+        </div>
+      </div>
+
+      <div class="reporte-card fade-in" style="transition-delay:.08s">
+        <div class="reporte-head">
+          <span class="pill">Jue 03 Abr 2025</span>
+          <div class="reporte-date"></div>
+        </div>
+        <div class="reporte-body">
+          <div class="reporte-title">Jobs report mixto: NFP mejor de lo esperado, pero salarios moderan</div>
+          <div class="reporte-summary">El informe de empleo de marzo mostró 228K nóminas no agrícolas vs. 140K esperados. Sin embargo, los salarios crecieron por debajo de lo estimado. La Fed mantiene su postura de esperar más datos antes de bajar tasas. Tech rebotó levemente, energía sostuvo.</div>
+          <div class="reporte-minis">
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">S&P 500</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+0.74%</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">10Y UST</div>
+              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">4.05%</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">DXY</div>
+              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">-0.42%</div>
+            </div>
+          </div>
+        </div>
+        <div class="reporte-footer">
+          <span class="pill">Macro · Fed · Empleo</span>
+          <a href="#" class="read-link" onclick="openModal('r2');return false;">Leer completo →</a>
+        </div>
+      </div>
+
+      <div class="reporte-card fade-in" style="transition-delay:.16s">
+        <div class="reporte-head">
+          <span class="pill">Mié 02 Abr 2025</span>
+          <div class="reporte-date"></div>
+        </div>
+        <div class="reporte-body">
+          <div class="reporte-title">NVIDIA confirma demanda record: otro trimestre de data center explosivo</div>
+          <div class="reporte-summary">NVDA presentó resultados que superaron todas las estimaciones. Revenue de Data Center batió consensus por 8%. El guidance para Q1 FY26 fue lo más importante: siguen viendo demanda insaciable de infraestructura AI. La acción subió +7% en after-market.</div>
+          <div class="reporte-minis">
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">NVDA</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+7.2%</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">Nasdaq</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+1.34%</div>
+            </div>
+          </div>
+        </div>
+        <div class="reporte-footer">
+          <span class="pill">Earnings · Tech · AI</span>
+          <a href="#" class="read-link" onclick="openModal('r3');return false;">Leer completo →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RADAR SEMANAL ── -->
+<section id="radar-semanal">
+  <div class="inner">
+    <div class="radar-header">
+      <div>
+        <p class="s-label">// publicación semanal</p>
+        <h2 class="s-title">Radar de Mercado Semanal</h2>
+        <p class="s-desc">Una vez por semana, un informe completo del estado del mercado: qué sectores están liderando, qué empresas están en radar, qué riesgos hay sobre la mesa y cuál es el posicionamiento inteligente.</p>
+      </div>
+    </div>
+
+    <div class="radar-reports">
+
+      <div class="radar-card latest fade-in" data-id="1">
+        <div>
+          <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem;">
+            <span class="pill blue">Última edición</span>
+            <span class="pill red">● Mercado en modo risk-off</span>
+          </div>
+          <div class="radar-card-title">Semana 14 · Aranceles, pánico y el elefante en la sala</div>
+          <div class="radar-card-desc">
+            El anuncio arancelario de Trump cambió el escenario macro de golpe. Analizamos el impacto real en las cadenas de suministro tech, qué empresas tienen más exposición a China, cómo posicionarse en este contexto de alta volatilidad, y por qué el oro vuelve a ser protagonista.
+          </div>
+          <div class="radar-topics">
+            <span class="radar-topic">Aranceles 2025</span>
+            <span class="radar-topic">Supply Chain</span>
+            <span class="radar-topic">Semiconductores</span>
+            <span class="radar-topic">Refugios</span>
+            <span class="radar-topic">Argentina</span>
+          </div>
+        </div>
+        <div class="radar-card-right">
+          <div class="radar-week">Semana del 31 Mar</div>
+          <button class="radar-btn" onclick="openModal('rs1')">Leer Informe →</button>
+        </div>
+      </div>
+
+      <div class="radar-card fade-in" style="transition-delay:.07s" data-id="2">
+        <div>
+          <div style="margin-bottom:.6rem;"><span class="pill">Edición anterior</span></div>
+          <div class="radar-card-title">Semana 13 · Earnings season arranca: quiénes dan el primer golpe</div>
+          <div class="radar-card-desc">Análisis del arranque de la temporada de resultados Q1 2025. Bancos primero, tech después. Qué esperar, qué preguntas son claves en cada call y cómo está posicionado el consenso.</div>
+          <div class="radar-topics">
+            <span class="radar-topic">Earnings Q1 2025</span>
+            <span class="radar-topic">Bancos</span>
+            <span class="radar-topic">Big Tech</span>
+            <span class="radar-topic">Guidance</span>
+          </div>
+        </div>
+        <div class="radar-card-right">
+          <div class="radar-week">Semana del 24 Mar</div>
+          <button class="radar-btn" onclick="openModal('rs2')">Leer Informe →</button>
+        </div>
+      </div>
+
+      <div class="radar-card fade-in" style="transition-delay:.14s" data-id="3">
+        <div>
+          <div style="margin-bottom:.6rem;"><span class="pill">Semana 12</span></div>
+          <div class="radar-card-title">Semana 12 · La Fed pausa y el mercado celebra. ¿Por cuánto tiempo?</div>
+          <div class="radar-card-desc">La Fed mantuvo tasas sin cambios y el mercado lo leyó como dovish. Analizamos cuán sostenible es el rally y qué necesitaría ver la Fed para retomar el ciclo de baja.</div>
+          <div class="radar-topics">
+            <span class="radar-topic">FOMC</span>
+            <span class="radar-topic">Política Monetaria</span>
+            <span class="radar-topic">Tasas</span>
+            <span class="radar-topic">Growth vs Value</span>
+          </div>
+        </div>
+        <div class="radar-card-right">
+          <div class="radar-week">Semana del 17 Mar</div>
+          <button class="radar-btn" onclick="openModal('rs3')">Leer Informe →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── INFORMES DE EMPRESAS ── -->
+<section id="informes">
+  <div class="inner">
+    <div class="informes-header">
+      <div>
+        <p class="s-label">// X · análisis de mercados y empresas</p>
+        <h2 class="s-title">Informes de Empresas</h2>
+        <p class="s-desc">Análisis individuales con visión 360: negocio, finanzas, valuación y perspectiva. Del gráfico al balance.</p>
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterEmpresas(this,'all')">Todas</button>
+          <button class="filter-btn" onclick="filterEmpresas(this,'us-tech')">US Tech</button>
+          <button class="filter-btn" onclick="filterEmpresas(this,'ai')">AI</button>
+          <button class="filter-btn" onclick="filterEmpresas(this,'fintech')">FinTech</button>
+          <button class="filter-btn" onclick="filterEmpresas(this,'latam')">LatAm / AR</button>
+          <button class="filter-btn" onclick="filterEmpresas(this,'consumer')">Consumer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empresas-grid" id="empresasGrid">
+
+      <!-- NVDA -->
+      <div class="empresa-card fade-in" data-cat="us-tech ai">
+        <div class="empresa-head">
+          <span class="ticker">NVDA</span>
+          <span class="empresa-sector">Semiconductores</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">NVIDIA Corporation</div>
+          <div class="empresa-date">Q4 FY2025 · Análisis completo</div>
+          <p class="empresa-desc">El moat real no está en el hardware — está en CUDA. El ecosistema de software que rodea a sus GPUs es lo que los competidores no pueden replicar en años. Data Center sigue siendo la historia, con demanda insaciable de infraestructura AI.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Revenue YoY</div><div class="m-val val-up">+122%</div></div>
+            <div class="m"><div class="m-lbl">Gross Margin</div><div class="m-val val-neutral">74.6%</div></div>
+            <div class="m"><div class="m-lbl">Free Cash Flow</div><div class="m-val val-up">$27.7B</div></div>
+            <div class="m"><div class="m-lbl">Data Center</div><div class="m-val val-up">+93% YoY</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">AI · Infraestructura</span>
+        </div>
+      </div>
+
+      <!-- META -->
+      <div class="empresa-card fade-in" data-cat="us-tech ai">
+        <div class="empresa-head">
+          <span class="ticker pur">META</span>
+          <span class="empresa-sector">Social / AI</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Meta Platforms</div>
+          <div class="empresa-date">Q1 2025 · Earnings Analysis</div>
+          <p class="empresa-desc">El año de la eficiencia se convirtió en el año de la IA. Advantage+ y Llama están convirtiendo el capex masivo en monetización real. El mercado subestima el leverage operativo que tiene Meta en publicidad.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">EPS YoY</div><div class="m-val val-up">+89%</div></div>
+            <div class="m"><div class="m-lbl">Op. Margin</div><div class="m-val val-up">41%</div></div>
+            <div class="m"><div class="m-lbl">DAP Growth</div><div class="m-val val-up">+7%</div></div>
+            <div class="m"><div class="m-lbl">Capex '25E</div><div class="m-val val-neutral">$60-65B</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">Social · Ads</span>
+        </div>
+      </div>
+
+      <!-- GOOGL -->
+      <div class="empresa-card fade-in" data-cat="us-tech ai">
+        <div class="empresa-head">
+          <span class="ticker">GOOGL</span>
+          <span class="empresa-sector">Search / Cloud</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Alphabet</div>
+          <div class="empresa-date">Q4 2024 · Deep Dive</div>
+          <p class="empresa-desc">Google Cloud crece a +28% YoY y ya es rentable. La pregunta sobre si la IA destruye el negocio de search es válida, pero el mercado sobreestima el riesgo. Alphabet está monetizando IA mejor que sus competidores a través de sus propios productos.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Revenue YoY</div><div class="m-val val-up">+12%</div></div>
+            <div class="m"><div class="m-lbl">Cloud YoY</div><div class="m-val val-up">+28%</div></div>
+            <div class="m"><div class="m-lbl">Net Margin</div><div class="m-val val-up">24%</div></div>
+            <div class="m"><div class="m-lbl">P/E Fwd</div><div class="m-val val-neutral">20x</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">Search · Cloud</span>
+        </div>
+      </div>
+
+      <!-- MSFT -->
+      <div class="empresa-card fade-in" data-cat="us-tech ai">
+        <div class="empresa-head">
+          <span class="ticker pur">MSFT</span>
+          <span class="empresa-sector">Cloud / AI</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Microsoft</div>
+          <div class="empresa-date">Q2 FY2025 · Earnings</div>
+          <p class="empresa-desc">Azure creció +31% impulsado por AI. La integración de Copilot en Microsoft 365 está generando upsell real en enterprise. La tesis es simple: tienen acceso a los 300M usuarios corporativos más rentables del mundo para monetizar AI.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Azure YoY</div><div class="m-val val-up">+31%</div></div>
+            <div class="m"><div class="m-lbl">FCF</div><div class="m-val val-up">$27B</div></div>
+            <div class="m"><div class="m-lbl">Op. Margin</div><div class="m-val val-up">45%</div></div>
+            <div class="m"><div class="m-lbl">P/E Fwd</div><div class="m-val val-neutral">29x</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">Cloud · Enterprise</span>
+        </div>
+      </div>
+
+      <!-- AMZN -->
+      <div class="empresa-card fade-in" data-cat="us-tech consumer">
+        <div class="empresa-head">
+          <span class="ticker gld">AMZN</span>
+          <span class="empresa-sector">eComm / Cloud</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Amazon</div>
+          <div class="empresa-date">Q4 2024 · Análisis completo</div>
+          <p class="empresa-desc">AWS sigue siendo la joya de la corona. Pero el turnaround de márgenes en retail es lo que más impresiona: lo que era un negocio de break-even está generando profitability creciente. Advertising, la parte menos hablada, ya supera los $56B anuales.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">AWS YoY</div><div class="m-val val-up">+19%</div></div>
+            <div class="m"><div class="m-lbl">Op. Income</div><div class="m-val val-up">$21.2B</div></div>
+            <div class="m"><div class="m-lbl">Advertising</div><div class="m-val val-up">+18%</div></div>
+            <div class="m"><div class="m-lbl">FCF YoY</div><div class="m-val val-up">+170%</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">Cloud · Ads · Retail</span>
+        </div>
+      </div>
+
+      <!-- TSLA -->
+      <div class="empresa-card fade-in" data-cat="us-tech consumer">
+        <div class="empresa-head">
+          <span class="ticker red">TSLA</span>
+          <span class="empresa-sector">EV / Tech</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Tesla</div>
+          <div class="empresa-date">Q4 2024 · Análisis</div>
+          <p class="empresa-desc">Los márgenes de auto comprimidos son el problema real, no las entregas. La tesis optimista ahora depende de Robotaxi y FSD. Son opciones reales, pero con timelines inciertos. Musk necesita mostrar resultados, no sólo promesas.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Auto Margin</div><div class="m-val val-down">13.6%</div></div>
+            <div class="m"><div class="m-lbl">Entregas YoY</div><div class="m-val val-down">-1%</div></div>
+            <div class="m"><div class="m-lbl">Energy YoY</div><div class="m-val val-up">+67%</div></div>
+            <div class="m"><div class="m-lbl">P/E Fwd</div><div class="m-val val-neutral">72x</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot n"></div><span style="color:var(--gold)">Cautela</span></div>
+          <span class="pill">EV · Autonomía</span>
+        </div>
+      </div>
+
+      <!-- MELI -->
+      <div class="empresa-card fade-in" data-cat="fintech latam">
+        <div class="empresa-head">
+          <span class="ticker grn">MELI</span>
+          <span class="empresa-sector">FinTech / eComm</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">MercadoLibre</div>
+          <div class="empresa-date">Q4 2024 · Deep Dive</div>
+          <p class="empresa-desc">MercadoPago está superando al ecommerce en crecimiento. El flywheel entre marketplace, crédito y pagos sigue compoundeando. La historia es fintech, no retail — y el mercado recién está empezando a entenderlo.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Fintech Rev.</div><div class="m-val val-up">+38%</div></div>
+            <div class="m"><div class="m-lbl">TPV</div><div class="m-val val-up">$57.5B</div></div>
+            <div class="m"><div class="m-lbl">GMV YoY</div><div class="m-val val-up">+14%</div></div>
+            <div class="m"><div class="m-lbl">Net Income</div><div class="m-val val-up">$1.9B</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">FinTech · LatAm</span>
+        </div>
+      </div>
+
+      <!-- GLOB -->
+      <div class="empresa-card fade-in" data-cat="us-tech latam">
+        <div class="empresa-head">
+          <span class="ticker pur">GLOB</span>
+          <span class="empresa-sector">IT Services</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Globant</div>
+          <div class="empresa-date">Q3 2024 · Análisis</div>
+          <p class="empresa-desc">La empresa argentina de IT más global, con clientes Fortune 500 y presencia en 30 países. El riesgo principal es la presión sobre márgenes por la competencia india. La expansión en AI Studios puede ser un diferencial clave para los próximos trimestres.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Revenue YoY</div><div class="m-val val-up">+8%</div></div>
+            <div class="m"><div class="m-lbl">Op. Margin</div><div class="m-val val-neutral">15%</div></div>
+            <div class="m"><div class="m-lbl">Clientes +1M</div><div class="m-val val-up">+12</div></div>
+            <div class="m"><div class="m-lbl">P/E Fwd</div><div class="m-val val-neutral">22x</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot n"></div><span style="color:var(--gold)">Neutral</span></div>
+          <span class="pill">IT · Argentina</span>
+        </div>
+      </div>
+
+      <!-- GGAL -->
+      <div class="empresa-card fade-in" data-cat="fintech latam">
+        <div class="empresa-head">
+          <span class="ticker gld">GGAL</span>
+          <span class="empresa-sector">Banca · Argentina</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Grupo Financiero Galicia</div>
+          <div class="empresa-date">2025 · Análisis macro + empresa</div>
+          <p class="empresa-desc">Con la normalización cambiaria y la baja de tasas reales, los bancos argentinos son el trade más directo a la recuperación económica. El riesgo es macro, pero el upside también. La clave es el crédito privado que aún está en mínimos históricos.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">ROE</div><div class="m-val val-up">41%</div></div>
+            <div class="m"><div class="m-lbl">P/BV</div><div class="m-val val-neutral">1.8x</div></div>
+            <div class="m"><div class="m-lbl">Crédito/PBI AR</div><div class="m-val val-down">5%</div></div>
+            <div class="m"><div class="m-lbl">Potencial</div><div class="m-val val-up">Alto</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot n"></div><span style="color:var(--gold)">Cautela macro</span></div>
+          <span class="pill">Banca · Argentina</span>
+        </div>
+      </div>
+
+      <!-- YPFD -->
+      <div class="empresa-card fade-in" data-cat="latam">
+        <div class="empresa-head">
+          <span class="ticker red">YPFD</span>
+          <span class="empresa-sector">Energía · Argentina</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">YPF</div>
+          <div class="empresa-date">2025 · Vaca Muerta deep dive</div>
+          <p class="empresa-desc">Vaca Muerta es uno de los recursos no convencionales más grandes del mundo. El desafío no es el recurso sino la infraestructura para exportarlo. Con los proyectos de GNL en marcha, YPF tiene una ventana histórica que no tuvo en décadas.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Producción Shale</div><div class="m-val val-up">+34%</div></div>
+            <div class="m"><div class="m-lbl">P/E Fwd</div><div class="m-val val-up">4x</div></div>
+            <div class="m"><div class="m-lbl">Deuda Neta</div><div class="m-val val-down">Alta</div></div>
+            <div class="m"><div class="m-lbl">Upside GNL</div><div class="m-val val-up">Masivo</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista LT</span></div>
+          <span class="pill">Energía · Shale</span>
+        </div>
+      </div>
+
+      <!-- SHOP -->
+      <div class="empresa-card fade-in" data-cat="us-tech consumer">
+        <div class="empresa-head">
+          <span class="ticker grn">SHOP</span>
+          <span class="empresa-sector">eCommerce SaaS</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Shopify</div>
+          <div class="empresa-date">Q4 2024 · Análisis</div>
+          <p class="empresa-desc">Shopify pasó de "empresa de alto crecimiento" a empresa que genera free cash flow real. La expansión en enterprise (Shopify Plus) y las soluciones financieras (Shopify Balance, Capital) están aumentando el ARPU y el moat. La competencia con Amazon sigue siendo el riesgo central.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Revenue YoY</div><div class="m-val val-up">+24%</div></div>
+            <div class="m"><div class="m-lbl">FCF Margin</div><div class="m-val val-up">17%</div></div>
+            <div class="m"><div class="m-lbl">GMV YoY</div><div class="m-val val-up">+26%</div></div>
+            <div class="m"><div class="m-lbl">P/S Fwd</div><div class="m-val val-neutral">10x</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot b"></div><span class="val-up">Alcista</span></div>
+          <span class="pill">eComm · SaaS</span>
+        </div>
+      </div>
+
+      <!-- AAPL -->
+      <div class="empresa-card fade-in" data-cat="us-tech consumer">
+        <div class="empresa-head">
+          <span class="ticker">AAPL</span>
+          <span class="empresa-sector">Consumer Tech</span>
+        </div>
+        <div class="empresa-body">
+          <div class="empresa-name">Apple</div>
+          <div class="empresa-date">Q1 FY2025 · Análisis</div>
+          <p class="empresa-desc">Services creció +14% y ya representa el 27% del revenue total con márgenes de 75%. China sigue siendo el riesgo principal — mercado que explica más del 15% de las ventas y donde enfrentan competencia creciente de Huawei. Apple Intelligence todavía no mueve la aguja.</p>
+          <div class="empresa-metrics">
+            <div class="m"><div class="m-lbl">Services YoY</div><div class="m-val val-up">+14%</div></div>
+            <div class="m"><div class="m-lbl">Services Margin</div><div class="m-val val-up">75%</div></div>
+            <div class="m"><div class="m-lbl">iPhone YoY</div><div class="m-val val-neutral">+2%</div></div>
+            <div class="m"><div class="m-lbl">Buybacks LTM</div><div class="m-val val-up">$95B</div></div>
+          </div>
+        </div>
+        <div class="empresa-footer">
+          <div class="rating"><div class="rdot n"></div><span style="color:var(--gold)">Neutral</span></div>
+          <span class="pill">Consumer · Services</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── RADAR VISUAL ── -->
+<section id="radar-visual">
+  <div class="inner">
+    <div style="margin-bottom:2.5rem;">
+      <p class="s-label">// snapshot del mercado · 4 abr 2025</p>
+      <h2 class="s-title">Dashboard de Mercado</h2>
+      <p class="s-desc">Visión 360 del estado del mercado: índices globales, sectores, breadth, futures, forex, treasuries, commodities, Argentina y calendarios de eventos.</p>
+    </div>
+
+    <div class="radar-visual-grid">
+
+      <!-- ① Índices globales -->
+      <div class="rv-panel wide fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Índices Globales <span>· cierre 04-abr-2025</span></div>
+          <div class="rv-update">Datos al cierre</div>
+        </div>
+        <div class="rv-body">
+          <div class="idx-grid">
+            <div class="idx-item"><div class="idx-name">S&amp;P 500</div><div class="idx-val">5,074</div><div class="idx-chg val-down">-4.84%</div></div>
+            <div class="idx-item"><div class="idx-name">NASDAQ 100</div><div class="idx-val">17,468</div><div class="idx-chg val-down">-5.97%</div></div>
+            <div class="idx-item"><div class="idx-name">Dow Jones</div><div class="idx-val">40,545</div><div class="idx-chg val-down">-3.98%</div></div>
+            <div class="idx-item"><div class="idx-name">Russell 2000</div><div class="idx-val">1,827</div><div class="idx-chg val-down">-6.59%</div></div>
+            <div class="idx-item"><div class="idx-name">VIX</div><div class="idx-val">45.31</div><div class="idx-chg val-down" style="color:var(--red)">+112%</div></div>
+            <div class="idx-item"><div class="idx-name">Merval</div><div class="idx-val">2,801K</div><div class="idx-chg val-down">-2.1%</div></div>
+            <div class="idx-item"><div class="idx-name">Stoxx 600</div><div class="idx-val">498</div><div class="idx-chg val-down">-3.54%</div></div>
+            <div class="idx-item"><div class="idx-name">Nikkei 225</div><div class="idx-val">33,780</div><div class="idx-chg val-down">-5.21%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ② Sector Heatmap -->
+      <div class="rv-panel wide fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Sectores S&amp;P 500 <span>· heatmap de performance</span></div>
+          <div style="font-size:.65rem;color:var(--muted);font-family:var(--mono)">Risk-off generalizado</div>
+        </div>
+        <div class="rv-body">
+          <div class="sector-grid">
+            <div class="sector-cell sc-dn"><div class="sector-name">Tecnología</div><div class="sector-chg val-down">-5.8%</div></div>
+            <div class="sector-cell sc-vdn"><div class="sector-name">Consumo Discr.</div><div class="sector-chg val-down">-7.1%</div></div>
+            <div class="sector-cell sc-dn"><div class="sector-name">Industriales</div><div class="sector-chg val-down">-4.2%</div></div>
+            <div class="sector-cell sc-dn"><div class="sector-name">Financiero</div><div class="sector-chg val-down">-3.9%</div></div>
+            <div class="sector-cell sc-flat"><div class="sector-name">Utilities</div><div class="sector-chg val-down">-0.7%</div></div>
+            <div class="sector-cell sc-up"><div class="sector-name">Consumo Básico</div><div class="sector-chg val-up">+0.6%</div></div>
+            <div class="sector-cell sc-up"><div class="sector-name">Salud</div><div class="sector-chg val-up">+0.4%</div></div>
+            <div class="sector-cell sc-dn"><div class="sector-name">Energía</div><div class="sector-chg val-down">-4.5%</div></div>
+            <div class="sector-cell sc-dn"><div class="sector-name">Materiales</div><div class="sector-chg val-down">-4.8%</div></div>
+            <div class="sector-cell sc-flat"><div class="sector-name">Real Estate</div><div class="sector-chg val-down">-1.2%</div></div>
+            <div class="sector-cell sc-dn"><div class="sector-name">Comunicación</div><div class="sector-chg val-down">-4.9%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ③ Market Breadth -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Market Breadth <span>· amplitud del mercado</span></div>
+        </div>
+        <div class="rv-body">
+          <div class="breadth-grid">
+            <div class="breadth-item">
+              <div class="breadth-lbl">Avanzando vs Cayendo</div>
+              <div class="breadth-bar"><div class="breadth-fill" style="width:28%;background:var(--green)"></div></div>
+              <div class="breadth-nums"><span class="val-up">28% ↑</span><span class="val-down">68% ↓</span></div>
+            </div>
+            <div class="breadth-item">
+              <div class="breadth-lbl">Nuevos Máximos vs Mínimos</div>
+              <div class="breadth-bar"><div class="breadth-fill" style="width:12%;background:var(--green)"></div></div>
+              <div class="breadth-nums"><span class="val-up">12% High</span><span class="val-down">88% Low</span></div>
+            </div>
+            <div class="breadth-item">
+              <div class="breadth-lbl">Sobre SMA 50 días</div>
+              <div class="breadth-bar"><div class="breadth-fill" style="width:31%;background:var(--accent)"></div></div>
+              <div class="breadth-nums"><span class="val-neutral">31%</span><span class="val-down">69% bajo</span></div>
+            </div>
+            <div class="breadth-item">
+              <div class="breadth-lbl">Sobre SMA 200 días</div>
+              <div class="breadth-bar"><div class="breadth-fill" style="width:38%;background:var(--accent)"></div></div>
+              <div class="breadth-nums"><span class="val-neutral">38%</span><span class="val-down">62% bajo</span></div>
+            </div>
+          </div>
+          <div style="margin-top:.9rem;padding:.65rem .85rem;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:8px;font-size:.72rem;color:var(--dim);line-height:1.55;">
+            <strong style="color:var(--red)">Señal bajista:</strong> La amplitud confirma la debilidad. Sólo 1 de cada 3 acciones cotiza sobre su media de 50 días — el mercado no está siendo sostenido por fundamentos amplios, sino por pocos nombres. Risk-off.
+          </div>
+        </div>
+      </div>
+
+      <!-- ④ Futures Pre-market -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Equity Futures <span>· pre-market</span></div>
+          <div class="rv-update">Abre lunes</div>
+        </div>
+        <div class="rv-body">
+          <div class="rv-sublabel">ÍNDICES FUTUROS</div>
+          <div class="futures-grid">
+            <div class="fut-item">
+              <div><div class="fut-name">S&amp;P 500 Fut</div></div>
+              <div class="fut-right"><div class="fut-val val-down">5,010</div><div class="fut-chg val-down">-1.25%</div></div>
+            </div>
+            <div class="fut-item">
+              <div><div class="fut-name">Nasdaq Fut</div></div>
+              <div class="fut-right"><div class="fut-val val-down">17,180</div><div class="fut-chg val-down">-1.63%</div></div>
+            </div>
+            <div class="fut-item">
+              <div><div class="fut-name">Dow Jones Fut</div></div>
+              <div class="fut-right"><div class="fut-val val-down">40,010</div><div class="fut-chg val-down">-1.32%</div></div>
+            </div>
+            <div class="fut-item">
+              <div><div class="fut-name">Russell Fut</div></div>
+              <div class="fut-right"><div class="fut-val val-down">1,798</div><div class="fut-chg val-down">-1.58%</div></div>
+            </div>
+          </div>
+          <div class="rv-sublabel" style="margin-top:.9rem;">INTERNACIONALES</div>
+          <div class="futures-grid">
+            <div class="fut-item">
+              <div><div class="fut-name">Nikkei Fut</div></div>
+              <div class="fut-right"><div class="fut-val val-down">33,200</div><div class="fut-chg val-down">-1.72%</div></div>
+            </div>
+            <div class="fut-item">
+              <div><div class="fut-name">Stoxx 50 Fut</div></div>
+              <div class="fut-right"><div class="fut-val val-down">4,810</div><div class="fut-chg val-down">-0.95%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑤ Gainers & Losers -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Top Movers del Día</div>
+        </div>
+        <div class="rv-body">
+          <div class="rv-sublabel" style="color:var(--green)">▲ MAYORES GANADORES</div>
+          <div class="mover-row"><div><div class="mover-tick">NEM</div><div class="mover-name">Newmont — Oro/Refugio</div></div><div class="mover-chg val-up">+4.2%</div></div>
+          <div class="mover-row"><div><div class="mover-tick">GLD</div><div class="mover-name">SPDR Gold ETF</div></div><div class="mover-chg val-up">+1.9%</div></div>
+          <div class="mover-row"><div><div class="mover-tick">JNJ</div><div class="mover-name">Johnson &amp; Johnson</div></div><div class="mover-chg val-up">+1.4%</div></div>
+          <div class="mover-row"><div><div class="mover-tick">PG</div><div class="mover-name">Procter &amp; Gamble</div></div><div class="mover-chg val-up">+0.8%</div></div>
+          <div class="rv-sublabel" style="color:var(--red);margin-top:.85rem;">▼ MAYORES PERDEDORES</div>
+          <div class="mover-row"><div><div class="mover-tick">TSLA</div><div class="mover-name">Tesla</div></div><div class="mover-chg val-down">-10.4%</div></div>
+          <div class="mover-row"><div><div class="mover-tick">AMZN</div><div class="mover-name">Amazon</div></div><div class="mover-chg val-down">-9.1%</div></div>
+          <div class="mover-row"><div><div class="mover-tick">NVDA</div><div class="mover-name">NVIDIA</div></div><div class="mover-chg val-down">-8.7%</div></div>
+          <div class="mover-row"><div><div class="mover-tick">META</div><div class="mover-name">Meta Platforms</div></div><div class="mover-chg val-down">-7.4%</div></div>
+        </div>
+      </div>
+
+      <!-- ⑥ Forex -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Forex <span>· principales pares</span></div>
+        </div>
+        <div class="rv-body">
+          <div class="rv-sublabel">MAJORS</div>
+          <div class="forex-grid">
+            <div class="fx-item"><div class="fx-pair">EUR/USD</div><div class="fx-right"><div class="fx-val val-up">1.1024</div><div class="fx-chg val-up">+0.85%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">GBP/USD</div><div class="fx-right"><div class="fx-val val-up">1.3082</div><div class="fx-chg val-up">+0.62%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">USD/JPY</div><div class="fx-right"><div class="fx-val val-down">146.2</div><div class="fx-chg val-down">-1.42%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">USD/CHF</div><div class="fx-right"><div class="fx-val val-down">0.8821</div><div class="fx-chg val-down">-0.94%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">AUD/USD</div><div class="fx-right"><div class="fx-val val-down">0.6014</div><div class="fx-chg val-down">-1.18%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">USD/CAD</div><div class="fx-right"><div class="fx-val val-up">1.4392</div><div class="fx-chg val-up">+0.41%</div></div></div>
+          </div>
+          <div class="rv-sublabel" style="margin-top:.9rem;">DXY &amp; CRYPTO</div>
+          <div class="forex-grid">
+            <div class="fx-item"><div class="fx-pair">DXY</div><div class="fx-right"><div class="fx-val val-down">102.4</div><div class="fx-chg val-down">-1.2%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">BTC/USD</div><div class="fx-right"><div class="fx-val val-down">$81,200</div><div class="fx-chg val-down">-5.1%</div></div></div>
+            <div class="fx-item"><div class="fx-pair">ETH/USD</div><div class="fx-right"><div class="fx-val val-down">$1,598</div><div class="fx-chg val-down">-7.3%</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑦ Commodities -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Commodities <span>· metales y energía</span></div>
+        </div>
+        <div class="rv-body">
+          <div class="rv-sublabel">METALES PRECIOSOS</div>
+          <div class="comm-grid">
+            <div class="comm-item"><div class="comm-name">Oro (XAU)</div><div class="comm-val val-up">$3,114</div><div class="comm-chg val-up">+1.6% ↑</div></div>
+            <div class="comm-item"><div class="comm-name">Plata (XAG)</div><div class="comm-val val-up">$31.2</div><div class="comm-chg val-up">+0.8% ↑</div></div>
+            <div class="comm-item"><div class="comm-name">Platino</div><div class="comm-val val-down">$968</div><div class="comm-chg val-down">-1.1% ↓</div></div>
+            <div class="comm-item"><div class="comm-name">Cobre</div><div class="comm-val val-down">$4.21</div><div class="comm-chg val-down">-2.9% ↓</div></div>
+          </div>
+          <div class="rv-sublabel">ENERGÍA</div>
+          <div class="comm-grid">
+            <div class="comm-item"><div class="comm-name">WTI Crude</div><div class="comm-val val-down">$61.4</div><div class="comm-chg val-down">-6.6% ↓</div></div>
+            <div class="comm-item"><div class="comm-name">Brent</div><div class="comm-val val-down">$64.9</div><div class="comm-chg val-down">-6.1% ↓</div></div>
+            <div class="comm-item"><div class="comm-name">Nat. Gas</div><div class="comm-val val-down">$3.82</div><div class="comm-chg val-down">-1.4% ↓</div></div>
+            <div class="comm-item"><div class="comm-name">Gasoil</div><div class="comm-val val-down">$2.01</div><div class="comm-chg val-down">-5.2% ↓</div></div>
+          </div>
+          <div class="rv-sublabel">AGRÍCOLAS</div>
+          <div class="comm-grid">
+            <div class="comm-item"><div class="comm-name">Soja</div><div class="comm-val val-down">$9.82</div><div class="comm-chg val-down">-2.3% ↓</div></div>
+            <div class="comm-item"><div class="comm-name">Maíz</div><div class="comm-val val-down">$4.61</div><div class="comm-chg val-down">-1.8% ↓</div></div>
+            <div class="comm-item"><div class="comm-name">Trigo</div><div class="comm-val val-down">$5.29</div><div class="comm-chg val-down">-1.4% ↓</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑧ Treasuries US -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Renta Fija EE.UU. <span>· curva de tasas</span></div>
+        </div>
+        <div class="rv-body">
+          <div class="rv-sublabel">TREASURIES (UST)</div>
+          <div class="tsy-row"><div><div class="tsy-name">UST 2Y</div><div class="tsy-desc">Corto plazo · Fed sensible</div></div><div class="tsy-right"><div class="tsy-yield val-down">3.71%</div><div class="tsy-chg val-down">-18 bps</div></div></div>
+          <div class="tsy-row"><div><div class="tsy-name">UST 5Y</div><div class="tsy-desc">Vencimiento intermedio</div></div><div class="tsy-right"><div class="tsy-yield val-down">3.84%</div><div class="tsy-chg val-down">-14 bps</div></div></div>
+          <div class="tsy-row"><div><div class="tsy-name">UST 10Y</div><div class="tsy-desc">Referencia global</div></div><div class="tsy-right"><div class="tsy-yield val-down">4.00%</div><div class="tsy-chg val-down">-9 bps</div></div></div>
+          <div class="tsy-row"><div><div class="tsy-name">UST 30Y</div><div class="tsy-desc">Largo plazo · inflación</div></div><div class="tsy-right"><div class="tsy-yield val-down">4.41%</div><div class="tsy-chg val-down">-6 bps</div></div></div>
+          <div class="curve-note">
+            <strong>Curva en bull steepening:</strong> El 2Y cae más que el 10Y — el mercado está descontando recortes de tasas ante el riesgo de recesión por aranceles. Flight to safety clásico.
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑨ Argentina Panel -->
+      <div class="rv-panel wide fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">🇦🇷 Argentina <span>· tipos de cambio · bonos · tasas</span></div>
+          <div class="rv-update">Datos locales</div>
+        </div>
+        <div class="rv-body">
+          <div class="rv-sublabel">TIPOS DE DÓLAR</div>
+          <div class="ar-dolar-grid" style="margin-bottom:1.1rem;">
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Oficial</div><div class="ar-dolar-val val-neutral">$1,072</div><div class="ar-dolar-chg val-neutral">Crawling peg</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">MEP / Bolsa</div><div class="ar-dolar-val val-up">$1,138</div><div class="ar-dolar-chg val-up">+6.2% vs oficial</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">CCL</div><div class="ar-dolar-val val-up">$1,155</div><div class="ar-dolar-chg val-up">+7.7% vs oficial</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Blue</div><div class="ar-dolar-val val-up">$1,160</div><div class="ar-dolar-chg val-up">+8.2% brecha</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Tarjeta</div><div class="ar-dolar-val val-neutral">$1,716</div><div class="ar-dolar-chg">+60% recargo</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div>
+              <div class="rv-sublabel">BONOS SOBERANOS (HD)</div>
+              <div class="ar-bond-row"><div><div class="ar-bond-tick">AL30</div><div class="ar-bond-desc">Bono 2030 · Ley Arg.</div></div><div class="ar-bond-right"><div class="ar-bond-yield val-up">TIR 11.2%</div><div class="ar-bond-px">Precio: $72.4</div></div></div>
+              <div class="ar-bond-row"><div><div class="ar-bond-tick">GD30</div><div class="ar-bond-desc">Global 2030 · Ley NY</div></div><div class="ar-bond-right"><div class="ar-bond-yield val-up">TIR 10.8%</div><div class="ar-bond-px">Precio: $74.1</div></div></div>
+              <div class="ar-bond-row"><div><div class="ar-bond-tick">AL35</div><div class="ar-bond-desc">Bono 2035 · Ley Arg.</div></div><div class="ar-bond-right"><div class="ar-bond-yield val-up">TIR 12.4%</div><div class="ar-bond-px">Precio: $61.8</div></div></div>
+              <div class="ar-bond-row"><div><div class="ar-bond-tick">GD35</div><div class="ar-bond-desc">Global 2035 · Ley NY</div></div><div class="ar-bond-right"><div class="ar-bond-yield val-up">TIR 11.9%</div><div class="ar-bond-px">Precio: $63.5</div></div></div>
+              <div class="ar-bond-row"><div><div class="ar-bond-tick">RIESGO PAÍS</div><div class="ar-bond-desc">EMBI Argentina</div></div><div class="ar-bond-right"><div class="ar-bond-yield val-neutral">748 bps</div><div class="ar-bond-px">-15% ytd</div></div></div>
+            </div>
+            <div>
+              <div class="rv-sublabel">TASAS &amp; RENDIMIENTOS LOCALES</div>
+              <div class="ar-rates-grid">
+                <div class="ar-rate-item">
+                  <div class="ar-rate-name">Plazo Fijo</div>
+                  <div class="ar-rate-desc">TNA promedio bancos</div>
+                  <div class="ar-rate-val">29.0%</div>
+                  <div class="ar-rate-sub">≈ 2.4% mensual</div>
+                </div>
+                <div class="ar-rate-item">
+                  <div class="ar-rate-name">LECAP</div>
+                  <div class="ar-rate-desc">Letra capitalizable</div>
+                  <div class="ar-rate-val">31.5%</div>
+                  <div class="ar-rate-sub">TNA · corto plazo</div>
+                </div>
+                <div class="ar-rate-item">
+                  <div class="ar-rate-name">FCI MM</div>
+                  <div class="ar-rate-desc">Fondos liquidez T+0</div>
+                  <div class="ar-rate-val">28.4%</div>
+                  <div class="ar-rate-sub">TNA promedio</div>
+                </div>
+                <div class="ar-rate-item">
+                  <div class="ar-rate-name">Inflación</div>
+                  <div class="ar-rate-desc">IPC mensual Mar'25</div>
+                  <div class="ar-rate-val" style="color:var(--red)">3.7%</div>
+                  <div class="ar-rate-sub">≈ 54% anual</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑩ Earnings Calendar -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Earnings Calendar <span>· próximas semanas</span></div>
+        </div>
+        <div class="rv-body">
+          <div class="cal-row">
+            <div class="cal-date">07 Abr</div>
+            <div style="flex:1"><div class="cal-title">LEVI · Levi Strauss</div><div class="cal-desc">Impacto aranceles en cadena de suministro Asia. Guidance clave.</div></div>
+            <span class="cal-impact imp-med">Med</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">11 Abr</div>
+            <div style="flex:1"><div class="cal-title">JPM · JP Morgan</div><div class="cal-desc">Apertura oficial earnings season bancos. NII, reservas y outlook.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">11 Abr</div>
+            <div style="flex:1"><div class="cal-title">WFC · Wells Fargo</div><div class="cal-desc">Calidad de crédito y perspectiva de tasas post-aranceles.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">14 Abr</div>
+            <div style="flex:1"><div class="cal-title">GS · Goldman Sachs</div><div class="cal-desc">Investment banking, trading revenues y exposición a bonos soberanos.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">23 Abr</div>
+            <div style="flex:1"><div class="cal-title">TSLA · Tesla</div><div class="cal-desc">Márgenes auto, Cybertruck, FSD progress y timelines de Robotaxi.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">29 Abr</div>
+            <div style="flex:1"><div class="cal-title">META · Meta Platforms</div><div class="cal-desc">Ad revenue, Llama 4 progress, Reality Labs losses y Capex guidance.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">30 Abr</div>
+            <div style="flex:1"><div class="cal-title">MSFT · Microsoft</div><div class="cal-desc">Azure growth, Copilot monetization, AI capex vs. retorno esperado.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑪ Economic Calendar -->
+      <div class="rv-panel fade-in">
+        <div class="rv-panel-head">
+          <div class="rv-panel-title">Economic Calendar <span>· eventos macro clave</span></div>
+        </div>
+        <div class="rv-body">
+          <div class="cal-row">
+            <div class="cal-date">07 Abr</div>
+            <div style="flex:1"><div class="cal-title">Fed Minutes</div><div class="cal-desc">Actas de la última reunión del FOMC. Señales sobre recortes ante contexto arancelario.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">10 Abr</div>
+            <div style="flex:1"><div class="cal-title">CPI EE.UU. — Marzo</div><div class="cal-desc">Inflación de consumo. Consensus: +2.6% YoY. Clave post-aranceles.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">11 Abr</div>
+            <div style="flex:1"><div class="cal-title">PPI EE.UU. — Marzo</div><div class="cal-desc">Inflación mayorista. Indicador adelantado de presión en cadena de precios.</div></div>
+            <span class="cal-impact imp-med">Med</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">16 Abr</div>
+            <div style="flex:1"><div class="cal-title">Retail Sales EE.UU.</div><div class="cal-desc">Consumo privado Marzo. Primer dato de demanda post-anuncio aranceles.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">17 Abr</div>
+            <div style="flex:1"><div class="cal-title">Powell — Discurso</div><div class="cal-desc">Presidente de la Fed ante el Economic Club of Chicago. Tono clave para el mercado.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">30 Abr</div>
+            <div style="flex:1"><div class="cal-title">GDP EE.UU. Q1 — Prelim.</div><div class="cal-desc">Primera lectura del PBI del primer trimestre. Consensus: +1.2% annualized.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+          <div class="cal-row">
+            <div class="cal-date">07 May</div>
+            <div style="flex:1"><div class="cal-title">Reunión FOMC — Decisión</div><div class="cal-desc">Mercado no descuenta cambio en tasas pero el forward guidance post-aranceles es todo.</div></div>
+            <span class="cal-impact imp-high">Alto</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <div class="radar-disclaimer fade-in">
+      <strong>⚠ Aviso importante:</strong> Todos los datos del dashboard son ilustrativos y corresponden al cierre del viernes 4 de abril de 2025. No constituyen recomendación de inversión. Invertir en mercados financieros implica riesgo de pérdida parcial o total del capital. Consultá siempre con un asesor antes de tomar decisiones de inversión. Fuentes de referencia: Bloomberg, Finviz, Rendimientos.co, BCRA, INDEC.
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section id="contacto">
+  <div class="inner">
+    <div class="contact-wrap">
+      <div class="fade-in">
+        <p class="s-label">// contacto y servicios</p>
+        <h2 class="s-title">¿Querés saber más?<br/>Hablemos.</h2>
+        <p class="s-desc">Si buscás un análisis particular, querés sumarte a nuestros servicios o simplemente tenés una pregunta, escribime.</p>
+
+        <div class="contact-services">
+          <div class="service-item">
+            <div class="service-title"><span>📊</span> Informes de Empresas a Medida</div>
+            <div class="service-desc">Análisis profundo de cualquier empresa que tengas en radar. Negocio, financials, valuación y perspectiva. Para inversores que quieren tomar decisiones con información real.</div>
+          </div>
+          <div class="service-item">
+            <div class="service-title"><span>📬</span> Reporte Diario de Mercado</div>
+            <div class="service-desc">Cada mañana, antes de que abra Wall Street. Índices, macro, noticias clave y lo que puede mover el mercado. Para estar siempre un paso adelante.</div>
+          </div>
+          <div class="service-item">
+            <div class="service-title"><span>📡</span> Radar Semanal</div>
+            <div class="service-desc">Informe completo cada semana: sectores, empresas en radar, riesgos y oportunidades. Una visión macro + micro del mercado en un solo documento.</div>
+          </div>
+          <div class="service-item">
+            <div class="service-title"><span>✍️</span> Contenido Financiero para X</div>
+            <div class="service-desc">Análisis, hilos y posts financieros para personas o marcas que quieren construir autoridad en el mundo financiero en redes sociales.</div>
+          </div>
+        </div>
+
+        <div class="contact-links">
+          <a href="https://twitter.com/brunogazze" class="c-link" target="_blank">
+            <div class="c-icon">𝕏</div>
+            <div><div class="c-main">@brunogazze</div><div class="c-sub">Seguime en X / Twitter</div></div>
+            <span class="c-arrow">→</span>
+          </a>
+          <a href="mailto:bruno@gazze.com" class="c-link">
+            <div class="c-icon">✉</div>
+            <div><div class="c-main">bruno@gazze.com</div><div class="c-sub">Email directo</div></div>
+            <span class="c-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form fade-in" style="transition-delay:.1s" onsubmit="handleSubmit(event)">
+        <div class="f-row">
+          <div class="f-grp">
+            <label class="f-lbl">Nombre</label>
+            <input class="f-input" type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="f-grp">
+            <label class="f-lbl">Email</label>
+            <input class="f-input" type="email" placeholder="tu@email.com" required />
+          </div>
+        </div>
+        <div class="f-grp">
+          <label class="f-lbl">¿Qué te interesa?</label>
+          <select class="f-select f-input">
+            <option value="" disabled selected>Seleccioná una opción</option>
+            <option>Informe de empresa particular</option>
+            <option>Sumarse al Reporte Diario</option>
+            <option>Sumarse al Radar Semanal</option>
+            <option>Contenido para X / redes</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="f-grp">
+          <label class="f-lbl">Empresa o activo en radar <span style="color:var(--muted)">(opcional)</span></label>
+          <input class="f-input" type="text" placeholder="NVDA, BTC, GGAL..." />
+        </div>
+        <div class="f-grp">
+          <label class="f-lbl">Mensaje</label>
+          <textarea class="f-textarea" placeholder="Contame qué necesitás, qué empresa querés analizar o cualquier consulta..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar mensaje →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-tag" id="modalTag"></div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-copy">© 2025 Bruno Gazze · Analista Financiero</div>
+  <div class="footer-links">
+    <a href="#intro">Sobre mí</a>
+    <a href="#reportes">Reportes</a>
+    <a href="#radar-semanal">Radar</a>
+    <a href="#informes">Empresas</a>
+    <a href="#radar-visual">Dashboard</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</footer>
+
+<script>
+  // ── REPORT DATA ──
+  const REPORTS = {
+    r1: {
+      tag: 'Reporte Diario · Vie 04 Abr 2025',
+      title: 'Mercado bajo presión: aranceles de Trump sacuden a Wall Street',
+      meta: 'Apertura de mercado · Publicado: 04 Abr 2025 · 08:30 hs',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// resumen ejecutivo</div>
+          <p class="modal-text">El S&P 500 cerró con la <strong>mayor caída en dos años (-4.84%)</strong> luego del anuncio de aranceles generalizados del 10% a todas las importaciones y rangos del 20-54% para socios específicos. El mercado reaccionó con una venta masiva y coordinada que no distinguió sector ni capitalización.</p>
+          <p class="modal-text">El VIX saltó por encima de 45, nivel que históricamente marca capitulación o proximidad de piso. El oro tocó nuevos máximos históricos en $3,114 como activo refugio. El petróleo colapsó -6.6% por el temor a contracción de demanda global.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// números clave del día</div>
+          <div class="modal-metrics-grid">
+            <div class="modal-metric"><div class="modal-metric-lbl">S&P 500</div><div class="modal-metric-val val-down">-4.84%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Nasdaq 100</div><div class="modal-metric-val val-down">-5.97%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Dow Jones</div><div class="modal-metric-val val-down">-3.98%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Russell 2000</div><div class="modal-metric-val val-down">-6.59%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">VIX</div><div class="modal-metric-val val-down">45.31</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Oro</div><div class="modal-metric-val val-up">+1.6%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">WTI</div><div class="modal-metric-val val-down">-6.6%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">UST 10Y</div><div class="modal-metric-val val-down">4.00%</div></div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// qué pasó exactamente</div>
+          <p class="modal-text">Trump firmó la orden ejecutiva el jueves a la noche imponiendo aranceles "recíprocos" a más de 60 países. El cálculo es simple para el mercado: <strong>más inflación + menos crecimiento = stagflación</strong>. Eso es lo que el mercado está descontando hoy.</p>
+          <p class="modal-text">Los semiconductores fueron los más golpeados. NVDA -8.7%, AMD -9.2%, TSMC cayó -9% en ADRs. La razón es directa: buena parte de la cadena de manufactura de chips pasa por Asia. Los aranceles sobre Taiwan y Corea del Sur impactan directo en costos.</p>
+          <p class="modal-text">El consumo discrecional fue el sector más afectado (-7.1%). Amazon, que depende masivamente de sellers chinos, cayó -9.1%. Tesla -10.4% por doble golpe: aranceles en importaciones de partes de China + represalias sobre sus ventas en ese mercado.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// lo que hay que seguir</div>
+          <div class="modal-highlight danger">
+            <strong>Riesgo principal:</strong> La respuesta de China. Si Beijing aplica aranceles retaliatorios sobre bienes americanos — especialmente sobre agricultura, Boeing, y semiconductores de diseño americano fabricados fuera de EE.UU. — la situación escala a guerra comercial plena.
+          </div>
+          <div class="modal-highlight warn" style="margin-top:.75rem;">
+            <strong>Ojo con los CPI y PPI del 10 y 11 de abril:</strong> Si la inflación sorprende al alza post-aranceles, la Fed queda atrapada entre subir tasas para contener precios o bajarlas para sostener crecimiento. Ese escenario es el más disruptivo para los activos de riesgo.
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// conclusión</div>
+          <p class="modal-text">El mercado no está en modo <em>buy the dip</em> todavía. El contexto macro cambió de golpe. <strong>Paciencia, gestión del riesgo y liquidez son la prioridad</strong> en este entorno. Los refugios (oro, treasuries, consumo básico, salud) muestran el camino que está tomando el capital institucional.</p>
+        </div>`
+    },
+    r2: {
+      tag: 'Reporte Diario · Jue 03 Abr 2025',
+      title: 'Jobs report mixto: NFP mejor de lo esperado, pero salarios moderan',
+      meta: 'Apertura de mercado · Publicado: 03 Abr 2025 · 08:30 hs',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// resumen ejecutivo</div>
+          <p class="modal-text">El informe de empleo de marzo mostró <strong>228K nóminas no agrícolas</strong> contra las 140K del consensus — un beat importante. Pero los salarios promedio por hora crecieron +0.25% mensual vs. +0.3% esperado, lo que moderó el entusiasmo inicial.</p>
+          <p class="modal-text">El mercado leyó el dato como <strong>Goldilocks moderado</strong>: suficiente empleo para alejar el fantasma de recesión, pero salarios que no presionan inflación. La tasa de desempleo quedó en 4.2%, sin cambios.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// números clave del día</div>
+          <div class="modal-metrics-grid">
+            <div class="modal-metric"><div class="modal-metric-lbl">NFP Mar</div><div class="modal-metric-val val-up">228K</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Consensus</div><div class="modal-metric-val">140K</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Desempleo</div><div class="modal-metric-val val-neutral">4.2%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Salarios MoM</div><div class="modal-metric-val val-neutral">+0.25%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">S&P 500</div><div class="modal-metric-val val-up">+0.74%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">UST 10Y</div><div class="modal-metric-val val-down">4.05%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">DXY</div><div class="modal-metric-val val-down">-0.42%</div></div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// lectura del dato</div>
+          <p class="modal-text">La fortaleza del empleo viene impulsada por servicios de salud (+54K), gobierno (+19K) y leisure & hospitality (+43K). El sector manufacturero perdió -1K empleos — señal temprana de que la incertidumbre arancelaria ya está frenando contrataciones en industria.</p>
+          <p class="modal-text"><strong>La Fed no va a cambiar su postura con este dato.</strong> Powell había dicho que necesita ver más progreso en inflación antes de bajar tasas. Un empleo fuerte pero sin presión salarial no cambia el cálculo. El mercado sigue descontando 2 recortes en 2025, con el primero en septiembre.</p>
+          <div class="modal-highlight">
+            <strong>Nota importante:</strong> Este dato fue publicado antes del anuncio arancelario del jueves a la noche. En el contexto post-aranceles del viernes, el NFP ya quedó viejo. El foco total del mercado pasó al impacto en crecimiento e inflación de los nuevos aranceles.
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// lo que viene</div>
+          <p class="modal-text">El próximo dato grande es el <strong>CPI de marzo (10 de abril)</strong>. Si los precios al consumidor suben más de lo esperado, la Fed queda entre la espada y la pared: inflación que pide tasas altas, crecimiento que pide tasas bajas. Ese es el escenario que más le complica el trabajo a Powell.</p>
+        </div>`
+    },
+    r3: {
+      tag: 'Reporte Diario · Mié 02 Abr 2025',
+      title: 'NVIDIA confirma demanda récord: otro trimestre de Data Center explosivo',
+      meta: 'Apertura de mercado · Publicado: 02 Abr 2025 · 08:30 hs',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// resumen ejecutivo</div>
+          <p class="modal-text">NVIDIA reportó resultados del Q4 FY2025 que <strong>superaron todas las estimaciones</strong> en revenue, EPS y gross margin. El Data Center batió el consensus por 8%. La acción subió +7.2% en after-market, arrastrando al sector semiconductor y al Nasdaq.</p>
+          <p class="modal-text">El mensaje de Jensen Huang fue claro: la demanda de infraestructura de IA no está moderando. Cada hyperscaler — Microsoft, Google, Amazon, Meta — está aumentando su capex en AI compute para 2025. NVIDIA es el proveedor principal de todos ellos.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// números del trimestre</div>
+          <div class="modal-metrics-grid">
+            <div class="modal-metric"><div class="modal-metric-lbl">Revenue Total</div><div class="modal-metric-val val-up">$39.3B</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">vs Consensus</div><div class="modal-metric-val val-up">+4.2%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Data Center</div><div class="modal-metric-val val-up">$35.6B</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">DC YoY</div><div class="modal-metric-val val-up">+93%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Gross Margin</div><div class="modal-metric-val val-up">74.6%</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">EPS adj.</div><div class="modal-metric-val val-up">$0.89</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Free Cash Flow</div><div class="modal-metric-val val-up">$27.7B</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Q1 FY26 Guide</div><div class="modal-metric-val val-up">$43.0B</div></div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// lo más importante: el guidance</div>
+          <p class="modal-text">El guidance de Q1 FY26 en $43B (+9% secuencial) fue lo que más impactó. El consensus esperaba $42.1B. <strong>NVIDIA sigue creciendo de forma acelerada</strong> incluso sobre una base ya enorme. Eso no es lo que hace una empresa que está llegando a su techo de ciclo.</p>
+          <p class="modal-text">Blackwell (la nueva arquitectura de GPU) está en producción completa. Jensen mencionó que la demanda por Blackwell supera la capacidad de producción — no hay problema de demanda, hay limitación de oferta. TSMC sigue siendo el cuello de botella.</p>
+          <div class="modal-highlight">
+            <strong>El moat real de NVIDIA no es el hardware:</strong> Es CUDA — el ecosistema de software que corre sobre sus chips. Los 4 millones de desarrolladores que programan en CUDA no se van a migrar a chips de AMD o Intel de la noche a la mañana. Eso es lo que hace que el moat sea duradero.
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// riesgos a monitorear</div>
+          <p class="modal-text"><strong>Restricciones de exportación a China</strong> siguen siendo el riesgo número uno. China representaba ~25% del revenue antes de las restricciones de 2023. Con la nueva escalada arancelaria, cualquier endurecimiento adicional podría impactar directo en numbers.</p>
+          <p class="modal-text">El segundo riesgo es la <strong>concentración de clientes</strong>: Microsoft, Google, Amazon y Meta representan más del 40% del revenue de Data Center. Si uno sola de ellas baja su capex guidance, el impacto en NVDA sería inmediato.</p>
+        </div>`
+    },
+    rs1: {
+      tag: 'Radar Semanal · Semana 14 · 31 Mar – 04 Abr 2025',
+      title: 'Aranceles, pánico y el elefante en la sala',
+      meta: 'Publicado: 04 Abr 2025 · Lectura: ~8 minutos',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// el contexto de la semana</div>
+          <p class="modal-text">La semana que termina va a quedar en los libros. Trump firmó lo que llamó aranceles "recíprocos" — un piso del 10% para todos los países y tasas específicas del 20-54% para los principales socios comerciales. El mercado entró en modo <strong>risk-off total</strong>.</p>
+          <p class="modal-text">El S&P 500 cayó más de 9% en dos días. El Nasdaq perdió más del 11%. El VIX cerró en 45. Históricamente, ese nivel de volatilidad implícita marca <strong>miedo extremo</strong> — el tipo de lecturas que se ven en crisis reales, no en correcciones ordinarias.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// impacto real en las cadenas de suministro tech</div>
+          <p class="modal-text">La tecnología es el sector más expuesto porque sus cadenas de producción son profundamente globales. Un iPhone tiene componentes de 43 países. Un chip de NVIDIA se diseña en California, se fabrica en Taiwan, se empaqueta en Malasia y se envía desde varios hubs en Asia.</p>
+          <p class="modal-text"><strong>Las empresas más expuestas a la nueva estructura arancelaria:</strong></p>
+          <div class="modal-metrics-grid">
+            <div class="modal-metric"><div class="modal-metric-lbl">AAPL</div><div class="modal-metric-val val-down">Alta</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">TSLA</div><div class="modal-metric-val val-down">Alta</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">AMZN</div><div class="modal-metric-val val-down">Alta</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">NVDA</div><div class="modal-metric-val val-neutral">Media</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">META</div><div class="modal-metric-val val-up">Baja</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">MSFT</div><div class="modal-metric-val val-up">Baja</div></div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// el oro y los activos refugio: el mercado habla claro</div>
+          <p class="modal-text">Mientras todo caía, el <strong>oro tocó $3,114 — nuevo máximo histórico</strong>. Los treasuries subieron (yields bajaron). El yen se apreció. El dólar cayó contra casi todas las monedas. El capital institucional está buscando refugio de forma ordenada y sistemática.</p>
+          <p class="modal-text">Eso no es pánico — es reposicionamiento. Los managers institucionales no venden en el pánico: ya salieron antes. Lo que estamos viendo ahora es el mercado minorista y los CTAs (trend-followers) ajustando posiciones.</p>
+          <div class="modal-highlight warn">
+            <strong>Señal de alerta:</strong> El spread entre el 2Y y el 10Y del Tesoro americano se está comprimiendo agresivamente. El mercado está descontando recortes de tasas — pero no porque la economía esté bien, sino porque proyecta una desaceleración. Esa diferencia es enorme para la narrativa.
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// posicionamiento inteligente en este contexto</div>
+          <p class="modal-text">No hay que ser héroe en un mercado que está re-pricando el régimen macro completo. Las oportunidades van a aparecer — pero primero necesitamos ver <strong>señales de que la volatilidad cede</strong>: VIX por debajo de 30, breadth mejorando, y alguna señal de negociación en el frente arancelario.</p>
+          <p class="modal-text">Los sectores que muestran resiliencia relativa — consumo básico, salud, utilities — no son oportunidades de alpha, son refugios temporales. La oportunidad real va a estar en tech de calidad cuando el polvo baje.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// argentina en este contexto</div>
+          <p class="modal-text">Irónicamente, Argentina está parcialmente desacoplada. El riesgo país bajó en la semana — el mercado local entiende que el programa Milei es independiente de la guerra comercial global. <strong>El mayor riesgo para Argentina no son los aranceles sino la caída del precio de la soja</strong>, que impacta en la recaudación de retenciones y en el ingreso de dólares.</p>
+        </div>`
+    },
+    rs2: {
+      tag: 'Radar Semanal · Semana 13 · 24 Mar 2025',
+      title: 'Earnings season arranca: quiénes dan el primer golpe',
+      meta: 'Publicado: 28 Mar 2025 · Lectura: ~7 minutos',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// el contexto</div>
+          <p class="modal-text">La temporada de resultados del Q1 2025 arranca formalmente la semana del 7 de abril con los grandes bancos. JPMorgan, Wells Fargo, Goldman Sachs y Citi van a marcar el tono para el resto. <strong>Los bancos son el termómetro de la economía real</strong> — y en este contexto arancelario, su guidance va a ser muy revelador.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// qué esperar de los bancos</div>
+          <p class="modal-text">El NII (net interest income) sigue siendo el driver principal. Las tasas altas beneficiaron a los bancos en 2023-2024. Con la curva aplanándose, el spread entre lo que cobran por préstamos y lo que pagan por depósitos se comprime.</p>
+          <p class="modal-text">Las <strong>provisiones por pérdidas crediticias</strong> van a ser el número clave. Si los bancos están aumentando reservas, están anticipando deterioro en la calidad del crédito — lo que implica que ven riesgo de recesión. Si las mantienen estables, es señal de que el consumidor americano todavía está sano.</p>
+          <div class="modal-highlight">
+            <strong>Pregunta para el earnings call de JPM:</strong> ¿Cómo están viendo el pipeline de M&A y IPOs post-anuncio arancelario? El investment banking fue un driver clave de earnings en 2024. Si ese pipeline se congela, los números del Q2 van a decepcionar.
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// big tech: el foco está en el capex</div>
+          <p class="modal-text">Cuando reporten Meta, Microsoft, Alphabet y Amazon (última semana de abril), el mercado va a estar mirando una sola cosa: <strong>¿están manteniendo el guidance de capex en AI o lo están revisando a la baja?</strong></p>
+          <p class="modal-text">Si el capex se mantiene o sube, es bullish para NVIDIA y la infraestructura de AI. Si alguna lo baja, el sell-off en semiconductores puede ser violento. El contexto arancelario agrega incertidumbre sobre los costos de hardware que estas empresas tienen que importar.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// calendario de la semana</div>
+          <p class="modal-text"><strong>7 Abr:</strong> LEVI (impacto aranceles en supply chain). <strong>11 Abr:</strong> JPM, WFC (apertura earnings bancos). <strong>14 Abr:</strong> Goldman Sachs. <strong>22 Abr:</strong> Tesla (márgenes auto + roadmap Robotaxi). <strong>23-30 Abr:</strong> META, MSFT, GOOGL, AMZN en cascada.</p>
+        </div>`
+    },
+    rs3: {
+      tag: 'Radar Semanal · Semana 12 · 17 Mar 2025',
+      title: 'La Fed pausa y el mercado celebra — ¿por cuánto tiempo?',
+      meta: 'Publicado: 21 Mar 2025 · Lectura: ~6 minutos',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// la decisión del FOMC</div>
+          <p class="modal-text">La Fed mantuvo la tasa de fondos federales en 4.25-4.50%, como se esperaba. La sorpresa fue el tono del comunicado y la conferencia de Powell: más dovish de lo anticipado. <strong>El dot plot actualizado mostró que la mayoría de miembros sigue proyectando 2 recortes en 2025.</strong></p>
+          <p class="modal-text">El mercado lo leyó como una señal verde. El S&P 500 subió +1.1% el día de la decisión. Las growth stocks lideraron. Las yields de los treasuries bajaron.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// lo que dijo Powell que importa</div>
+          <p class="modal-text">Powell reconoció que la incertidumbre arancelaria ya está apareciendo en las encuestas de empresas y en algunos datos de actividad. Pero dijo que van a <strong>esperar a ver el impacto real en los datos duros</strong> (inflación y empleo) antes de actuar.</p>
+          <p class="modal-text">Traducción: la Fed tiene la intención de bajar tasas, pero no va a apresurarse si la inflación no cede. El trade-off entre mandato de precio estable y máximo empleo sigue siendo el dilema central.</p>
+          <div class="modal-highlight">
+            <strong>El riesgo no-lineal:</strong> Si los aranceles elevan la inflación al mismo tiempo que frenan el crecimiento, la Fed queda atrapada en un dilema de stagflación. En ese escenario, <em>no hay bala de plata</em> — bajar tasas alimenta inflación, subirlas aplasta crecimiento. Es el peor escenario para los activos de riesgo.
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// growth vs value en este contexto</div>
+          <p class="modal-text">La pausa dovish de la Fed es fundamentalmente <strong>positiva para growth</strong> — las valuaciones de las tecnológicas son más sensibles a la curva de tasas que las empresas de valor. Pero el contexto arancelario crea un viento en contra específico para tech por la exposición a cadenas de suministro asiáticas.</p>
+          <p class="modal-text">El resultado es un mercado confuso: el macro dice comprar growth (tasas bajas), pero el micro arancelario dice salir de empresas con supply chains en China. Esa tensión no se resuelve de un día para otro.</p>
+        </div>`
+    }
+  };
+
+  // ── MODAL LOGIC ──
+  function openModal(id) {
+    const data = REPORTS[id];
+    if (!data) return;
+    document.getElementById('modalTag').textContent = data.tag;
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalMeta').textContent = data.meta;
+    document.getElementById('modalBody').innerHTML = data.body;
+    const overlay = document.getElementById('modalOverlay');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    overlay.scrollTop = 0;
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── FORM ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Enviado ✓';
+    btn.style.background = 'var(--green)';
+    btn.style.boxShadow = '0 4px 18px rgba(34,211,165,.25)';
+    setTimeout(() => {
+      btn.textContent = 'Enviar mensaje →';
+      btn.style.background = '';
+      btn.style.boxShadow = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // ── MOBILE MENU ──
+  function toggleMenu(btn) {
+    let menu = document.getElementById('mobile-menu');
+    if (!menu) {
+      menu = document.createElement('div');
+      menu.id = 'mobile-menu';
+      menu.style.cssText = 'position:fixed;top:54px;left:0;right:0;background:rgba(8,8,14,.97);border-bottom:1px solid var(--b);padding:1.5rem 2rem;display:flex;flex-direction:column;gap:1rem;z-index:199';
+      ['Sobre mí:#intro','Reportes:#reportes','Radar:#radar-semanal','Empresas:#informes','Dashboard:#radar-visual','Contacto:#contacto'].forEach(item => {
+        const [label, href] = item.split(':');
+        const a = document.createElement('a');
+        a.href = href; a.textContent = label;
+        a.style.cssText = 'color:var(--dim);font-size:.9rem;font-weight:500;text-decoration:none';
+        a.onclick = () => menu.remove();
+        menu.appendChild(a);
+      });
+      document.body.appendChild(menu);
+    } else {
+      menu.remove();
+    }
+  }
+
+  // ── FILTER EMPRESAS ──
+  function filterEmpresas(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.empresa-card').forEach(card => {
+      card.style.display = (cat === 'all' || (card.dataset.cat || '').includes(cat)) ? '' : 'none';
+    });
+  }
+
+  // ── FADE-IN ON SCROLL ──
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.06 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
