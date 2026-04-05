@@ -1122,234 +1122,103 @@
 <!-- ── RADAR VISUAL ── -->
 <section id="radar-visual">
   <div class="inner">
-    <div style="margin-bottom:2.5rem;">
-      <p class="s-label">// snapshot del mercado · 4 abr 2025</p>
+    <div style="margin-bottom:1.75rem;">
+      <p class="s-label">// cotizaciones en tiempo real</p>
       <h2 class="s-title">Dashboard de Mercado</h2>
-      <p class="s-desc">Visión 360 del estado del mercado: índices globales, sectores, breadth, futures, forex, treasuries, commodities, Argentina y calendarios de eventos.</p>
+      <p class="s-desc">Índices, sectores, forex, commodities, bonos y dólar argentino actualizados al instante.</p>
+    </div>
+
+    <!-- Ticker Tape live -->
+    <div style="margin-bottom:1.25rem;border-radius:10px;overflow:hidden;border:1px solid var(--b);" class="fade-in">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq"},{"proName":"CBOE:VIX","title":"VIX"},{"proName":"COMEX:GC1!","title":"Oro"},{"proName":"NYMEX:CL1!","title":"WTI"},{"proName":"TVC:US10Y","title":"UST 10Y"},{"proName":"FX:EURUSD","title":"EUR/USD"},{"proName":"NASDAQ:NVDA","title":"NVDA"},{"proName":"NASDAQ:META","title":"META"},{"proName":"NASDAQ:TSLA","title":"TSLA"},{"proName":"NASDAQ:AAPL","title":"AAPL"},{"proName":"NASDAQ:AMZN","title":"AMZN"},{"proName":"NASDAQ:MSFT","title":"MSFT"},{"proName":"NYSE:MELI","title":"MELI"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BCBA:MERVAL","title":"Merval"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"es"}
+        </script>
+      </div>
     </div>
 
     <div class="radar-visual-grid">
 
-      <!-- ① Índices globales -->
+      <!-- ① Mercados Globales: índices, commodities, bonos, forex -->
       <div class="rv-panel wide fade-in">
         <div class="rv-panel-head">
-          <div class="rv-panel-title">Índices Globales <span>· cierre 04-abr-2025</span></div>
-          <div class="rv-update">Datos al cierre</div>
+          <div class="rv-panel-title">Mercados Globales <span>· índices · commodities · bonos · forex</span></div>
+          <div class="rv-update">Tiempo real</div>
         </div>
-        <div class="rv-body">
-          <div class="idx-grid">
-            <div class="idx-item"><div class="idx-name">S&amp;P 500</div><div class="idx-val">5,074</div><div class="idx-chg val-down">-4.84%</div></div>
-            <div class="idx-item"><div class="idx-name">NASDAQ 100</div><div class="idx-val">17,468</div><div class="idx-chg val-down">-5.97%</div></div>
-            <div class="idx-item"><div class="idx-name">Dow Jones</div><div class="idx-val">40,545</div><div class="idx-chg val-down">-3.98%</div></div>
-            <div class="idx-item"><div class="idx-name">Russell 2000</div><div class="idx-val">1,827</div><div class="idx-chg val-down">-6.59%</div></div>
-            <div class="idx-item"><div class="idx-name">VIX</div><div class="idx-val">45.31</div><div class="idx-chg val-down" style="color:var(--red)">+112%</div></div>
-            <div class="idx-item"><div class="idx-name">Merval</div><div class="idx-val">2,801K</div><div class="idx-chg val-down">-2.1%</div></div>
-            <div class="idx-item"><div class="idx-name">Stoxx 600</div><div class="idx-val">498</div><div class="idx-chg val-down">-3.54%</div></div>
-            <div class="idx-item"><div class="idx-name">Nikkei 225</div><div class="idx-val">33,780</div><div class="idx-chg val-down">-5.21%</div></div>
+        <div style="height:500px;">
+          <div class="tradingview-widget-container" style="height:100%;">
+            <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+            {"colorTheme":"dark","dateRange":"1D","showChart":true,"locale":"es","width":"100%","height":"500","isTransparent":true,"showSymbolLogo":true,"tabs":[{"title":"Índices","symbols":[{"s":"FOREXCOM:SPXUSD","d":"S&P 500"},{"s":"FOREXCOM:NSXUSD","d":"Nasdaq 100"},{"s":"FOREXCOM:DJI","d":"Dow Jones"},{"s":"CAPITALCOM:RTY","d":"Russell 2000"},{"s":"CBOE:VIX","d":"VIX"},{"s":"BCBA:MERVAL","d":"Merval"},{"s":"INDEX:SX5E","d":"Stoxx 600"},{"s":"TVC:NI225","d":"Nikkei 225"}],"originalTitle":"Indices"},{"title":"Commodities","symbols":[{"s":"COMEX:GC1!","d":"Oro"},{"s":"COMEX:SI1!","d":"Plata"},{"s":"NYMEX:CL1!","d":"WTI Crude"},{"s":"NYMEX:NG1!","d":"Nat. Gas"},{"s":"CBOT:ZS1!","d":"Soja"},{"s":"CBOT:ZC1!","d":"Maíz"},{"s":"CBOT:ZW1!","d":"Trigo"}],"originalTitle":"Commodities"},{"title":"Bonos","symbols":[{"s":"TVC:US02Y","d":"UST 2Y"},{"s":"TVC:US05Y","d":"UST 5Y"},{"s":"TVC:US10Y","d":"UST 10Y"},{"s":"TVC:US30Y","d":"UST 30Y"}],"originalTitle":"Bonds"},{"title":"Forex","symbols":[{"s":"FX:EURUSD","d":"EUR/USD"},{"s":"FX:GBPUSD","d":"GBP/USD"},{"s":"FX:USDJPY","d":"USD/JPY"},{"s":"FX:AUDUSD","d":"AUD/USD"},{"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},{"s":"BITSTAMP:ETHUSD","d":"Ethereum"}],"originalTitle":"Forex"}]}
+            </script>
           </div>
         </div>
       </div>
 
-      <!-- ② Sector Heatmap -->
+      <!-- ② Heatmap S&P 500 -->
       <div class="rv-panel wide fade-in">
         <div class="rv-panel-head">
-          <div class="rv-panel-title">Sectores S&amp;P 500 <span>· heatmap de performance</span></div>
-          <div style="font-size:.65rem;color:var(--muted);font-family:var(--mono)">Risk-off generalizado</div>
+          <div class="rv-panel-title">Heatmap S&P 500 <span>· performance por sector y empresa</span></div>
+          <div class="rv-update">Tiempo real</div>
         </div>
-        <div class="rv-body">
-          <div class="sector-grid">
-            <div class="sector-cell sc-dn"><div class="sector-name">Tecnología</div><div class="sector-chg val-down">-5.8%</div></div>
-            <div class="sector-cell sc-vdn"><div class="sector-name">Consumo Discr.</div><div class="sector-chg val-down">-7.1%</div></div>
-            <div class="sector-cell sc-dn"><div class="sector-name">Industriales</div><div class="sector-chg val-down">-4.2%</div></div>
-            <div class="sector-cell sc-dn"><div class="sector-name">Financiero</div><div class="sector-chg val-down">-3.9%</div></div>
-            <div class="sector-cell sc-flat"><div class="sector-name">Utilities</div><div class="sector-chg val-down">-0.7%</div></div>
-            <div class="sector-cell sc-up"><div class="sector-name">Consumo Básico</div><div class="sector-chg val-up">+0.6%</div></div>
-            <div class="sector-cell sc-up"><div class="sector-name">Salud</div><div class="sector-chg val-up">+0.4%</div></div>
-            <div class="sector-cell sc-dn"><div class="sector-name">Energía</div><div class="sector-chg val-down">-4.5%</div></div>
-            <div class="sector-cell sc-dn"><div class="sector-name">Materiales</div><div class="sector-chg val-down">-4.8%</div></div>
-            <div class="sector-cell sc-flat"><div class="sector-name">Real Estate</div><div class="sector-chg val-down">-1.2%</div></div>
-            <div class="sector-cell sc-dn"><div class="sector-name">Comunicación</div><div class="sector-chg val-down">-4.9%</div></div>
+        <div style="height:520px;">
+          <div class="tradingview-widget-container" style="height:100%;">
+            <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+            {"exchanges":[],"dataSource":"SPX500","grouping":"sector","blockSize":"market_cap_basic","blockColor":"change","locale":"es","colorTheme":"dark","hasTopBar":true,"isDataSetEnabled":false,"isZoomEnabled":true,"hasSymbolTooltip":true,"isMonoSize":false,"width":"100%","height":"520"}
+            </script>
           </div>
         </div>
       </div>
 
-      <!-- ③ Market Breadth -->
+      <!-- ③ Screener top movers -->
       <div class="rv-panel fade-in">
         <div class="rv-panel-head">
-          <div class="rv-panel-title">Market Breadth <span>· amplitud del mercado</span></div>
+          <div class="rv-panel-title">Screener <span>· top movers del mercado</span></div>
+          <div class="rv-update">Tiempo real</div>
         </div>
-        <div class="rv-body">
-          <div class="breadth-grid">
-            <div class="breadth-item">
-              <div class="breadth-lbl">Avanzando vs Cayendo</div>
-              <div class="breadth-bar"><div class="breadth-fill" style="width:28%;background:var(--green)"></div></div>
-              <div class="breadth-nums"><span class="val-up">28% ↑</span><span class="val-down">68% ↓</span></div>
-            </div>
-            <div class="breadth-item">
-              <div class="breadth-lbl">Nuevos Máximos vs Mínimos</div>
-              <div class="breadth-bar"><div class="breadth-fill" style="width:12%;background:var(--green)"></div></div>
-              <div class="breadth-nums"><span class="val-up">12% High</span><span class="val-down">88% Low</span></div>
-            </div>
-            <div class="breadth-item">
-              <div class="breadth-lbl">Sobre SMA 50 días</div>
-              <div class="breadth-bar"><div class="breadth-fill" style="width:31%;background:var(--accent)"></div></div>
-              <div class="breadth-nums"><span class="val-neutral">31%</span><span class="val-down">69% bajo</span></div>
-            </div>
-            <div class="breadth-item">
-              <div class="breadth-lbl">Sobre SMA 200 días</div>
-              <div class="breadth-bar"><div class="breadth-fill" style="width:38%;background:var(--accent)"></div></div>
-              <div class="breadth-nums"><span class="val-neutral">38%</span><span class="val-down">62% bajo</span></div>
-            </div>
-          </div>
-          <div style="margin-top:.9rem;padding:.65rem .85rem;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:8px;font-size:.72rem;color:var(--dim);line-height:1.55;">
-            <strong style="color:var(--red)">Señal bajista:</strong> La amplitud confirma la debilidad. Sólo 1 de cada 3 acciones cotiza sobre su media de 50 días — el mercado no está siendo sostenido por fundamentos amplios, sino por pocos nombres. Risk-off.
+        <div style="height:500px;">
+          <div class="tradingview-widget-container" style="height:100%;">
+            <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+            {"width":"100%","height":500,"defaultColumn":"overview","defaultScreen":"most_capitalized","showToolbar":true,"locale":"es","market":"america","colorTheme":"dark","isTransparent":true}
+            </script>
           </div>
         </div>
       </div>
 
-      <!-- ④ Futures Pre-market -->
+      <!-- ④ Forex Cross Rates -->
       <div class="rv-panel fade-in">
         <div class="rv-panel-head">
-          <div class="rv-panel-title">Equity Futures <span>· pre-market</span></div>
-          <div class="rv-update">Abre lunes</div>
+          <div class="rv-panel-title">Forex Cross Rates <span>· pares en vivo</span></div>
+          <div class="rv-update">Tiempo real</div>
         </div>
-        <div class="rv-body">
-          <div class="rv-sublabel">ÍNDICES FUTUROS</div>
-          <div class="futures-grid">
-            <div class="fut-item">
-              <div><div class="fut-name">S&amp;P 500 Fut</div></div>
-              <div class="fut-right"><div class="fut-val val-down">5,010</div><div class="fut-chg val-down">-1.25%</div></div>
-            </div>
-            <div class="fut-item">
-              <div><div class="fut-name">Nasdaq Fut</div></div>
-              <div class="fut-right"><div class="fut-val val-down">17,180</div><div class="fut-chg val-down">-1.63%</div></div>
-            </div>
-            <div class="fut-item">
-              <div><div class="fut-name">Dow Jones Fut</div></div>
-              <div class="fut-right"><div class="fut-val val-down">40,010</div><div class="fut-chg val-down">-1.32%</div></div>
-            </div>
-            <div class="fut-item">
-              <div><div class="fut-name">Russell Fut</div></div>
-              <div class="fut-right"><div class="fut-val val-down">1,798</div><div class="fut-chg val-down">-1.58%</div></div>
-            </div>
-          </div>
-          <div class="rv-sublabel" style="margin-top:.9rem;">INTERNACIONALES</div>
-          <div class="futures-grid">
-            <div class="fut-item">
-              <div><div class="fut-name">Nikkei Fut</div></div>
-              <div class="fut-right"><div class="fut-val val-down">33,200</div><div class="fut-chg val-down">-1.72%</div></div>
-            </div>
-            <div class="fut-item">
-              <div><div class="fut-name">Stoxx 50 Fut</div></div>
-              <div class="fut-right"><div class="fut-val val-down">4,810</div><div class="fut-chg val-down">-0.95%</div></div>
-            </div>
+        <div style="height:500px;">
+          <div class="tradingview-widget-container" style="height:100%;">
+            <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+            {"width":"100%","height":500,"currencies":["EUR","USD","JPY","GBP","CHF","AUD","CAD","BRL"],"isTransparent":true,"colorTheme":"dark","locale":"es"}
+            </script>
           </div>
         </div>
       </div>
 
-      <!-- ⑤ Gainers & Losers -->
-      <div class="rv-panel fade-in">
-        <div class="rv-panel-head">
-          <div class="rv-panel-title">Top Movers del Día</div>
-        </div>
-        <div class="rv-body">
-          <div class="rv-sublabel" style="color:var(--green)">▲ MAYORES GANADORES</div>
-          <div class="mover-row"><div><div class="mover-tick">NEM</div><div class="mover-name">Newmont — Oro/Refugio</div></div><div class="mover-chg val-up">+4.2%</div></div>
-          <div class="mover-row"><div><div class="mover-tick">GLD</div><div class="mover-name">SPDR Gold ETF</div></div><div class="mover-chg val-up">+1.9%</div></div>
-          <div class="mover-row"><div><div class="mover-tick">JNJ</div><div class="mover-name">Johnson &amp; Johnson</div></div><div class="mover-chg val-up">+1.4%</div></div>
-          <div class="mover-row"><div><div class="mover-tick">PG</div><div class="mover-name">Procter &amp; Gamble</div></div><div class="mover-chg val-up">+0.8%</div></div>
-          <div class="rv-sublabel" style="color:var(--red);margin-top:.85rem;">▼ MAYORES PERDEDORES</div>
-          <div class="mover-row"><div><div class="mover-tick">TSLA</div><div class="mover-name">Tesla</div></div><div class="mover-chg val-down">-10.4%</div></div>
-          <div class="mover-row"><div><div class="mover-tick">AMZN</div><div class="mover-name">Amazon</div></div><div class="mover-chg val-down">-9.1%</div></div>
-          <div class="mover-row"><div><div class="mover-tick">NVDA</div><div class="mover-name">NVIDIA</div></div><div class="mover-chg val-down">-8.7%</div></div>
-          <div class="mover-row"><div><div class="mover-tick">META</div><div class="mover-name">Meta Platforms</div></div><div class="mover-chg val-down">-7.4%</div></div>
-        </div>
-      </div>
-
-      <!-- ⑥ Forex -->
-      <div class="rv-panel fade-in">
-        <div class="rv-panel-head">
-          <div class="rv-panel-title">Forex <span>· principales pares</span></div>
-        </div>
-        <div class="rv-body">
-          <div class="rv-sublabel">MAJORS</div>
-          <div class="forex-grid">
-            <div class="fx-item"><div class="fx-pair">EUR/USD</div><div class="fx-right"><div class="fx-val val-up">1.1024</div><div class="fx-chg val-up">+0.85%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">GBP/USD</div><div class="fx-right"><div class="fx-val val-up">1.3082</div><div class="fx-chg val-up">+0.62%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">USD/JPY</div><div class="fx-right"><div class="fx-val val-down">146.2</div><div class="fx-chg val-down">-1.42%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">USD/CHF</div><div class="fx-right"><div class="fx-val val-down">0.8821</div><div class="fx-chg val-down">-0.94%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">AUD/USD</div><div class="fx-right"><div class="fx-val val-down">0.6014</div><div class="fx-chg val-down">-1.18%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">USD/CAD</div><div class="fx-right"><div class="fx-val val-up">1.4392</div><div class="fx-chg val-up">+0.41%</div></div></div>
-          </div>
-          <div class="rv-sublabel" style="margin-top:.9rem;">DXY &amp; CRYPTO</div>
-          <div class="forex-grid">
-            <div class="fx-item"><div class="fx-pair">DXY</div><div class="fx-right"><div class="fx-val val-down">102.4</div><div class="fx-chg val-down">-1.2%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">BTC/USD</div><div class="fx-right"><div class="fx-val val-down">$81,200</div><div class="fx-chg val-down">-5.1%</div></div></div>
-            <div class="fx-item"><div class="fx-pair">ETH/USD</div><div class="fx-right"><div class="fx-val val-down">$1,598</div><div class="fx-chg val-down">-7.3%</div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ⑦ Commodities -->
-      <div class="rv-panel fade-in">
-        <div class="rv-panel-head">
-          <div class="rv-panel-title">Commodities <span>· metales y energía</span></div>
-        </div>
-        <div class="rv-body">
-          <div class="rv-sublabel">METALES PRECIOSOS</div>
-          <div class="comm-grid">
-            <div class="comm-item"><div class="comm-name">Oro (XAU)</div><div class="comm-val val-up">$3,114</div><div class="comm-chg val-up">+1.6% ↑</div></div>
-            <div class="comm-item"><div class="comm-name">Plata (XAG)</div><div class="comm-val val-up">$31.2</div><div class="comm-chg val-up">+0.8% ↑</div></div>
-            <div class="comm-item"><div class="comm-name">Platino</div><div class="comm-val val-down">$968</div><div class="comm-chg val-down">-1.1% ↓</div></div>
-            <div class="comm-item"><div class="comm-name">Cobre</div><div class="comm-val val-down">$4.21</div><div class="comm-chg val-down">-2.9% ↓</div></div>
-          </div>
-          <div class="rv-sublabel">ENERGÍA</div>
-          <div class="comm-grid">
-            <div class="comm-item"><div class="comm-name">WTI Crude</div><div class="comm-val val-down">$61.4</div><div class="comm-chg val-down">-6.6% ↓</div></div>
-            <div class="comm-item"><div class="comm-name">Brent</div><div class="comm-val val-down">$64.9</div><div class="comm-chg val-down">-6.1% ↓</div></div>
-            <div class="comm-item"><div class="comm-name">Nat. Gas</div><div class="comm-val val-down">$3.82</div><div class="comm-chg val-down">-1.4% ↓</div></div>
-            <div class="comm-item"><div class="comm-name">Gasoil</div><div class="comm-val val-down">$2.01</div><div class="comm-chg val-down">-5.2% ↓</div></div>
-          </div>
-          <div class="rv-sublabel">AGRÍCOLAS</div>
-          <div class="comm-grid">
-            <div class="comm-item"><div class="comm-name">Soja</div><div class="comm-val val-down">$9.82</div><div class="comm-chg val-down">-2.3% ↓</div></div>
-            <div class="comm-item"><div class="comm-name">Maíz</div><div class="comm-val val-down">$4.61</div><div class="comm-chg val-down">-1.8% ↓</div></div>
-            <div class="comm-item"><div class="comm-name">Trigo</div><div class="comm-val val-down">$5.29</div><div class="comm-chg val-down">-1.4% ↓</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ⑧ Treasuries US -->
-      <div class="rv-panel fade-in">
-        <div class="rv-panel-head">
-          <div class="rv-panel-title">Renta Fija EE.UU. <span>· curva de tasas</span></div>
-        </div>
-        <div class="rv-body">
-          <div class="rv-sublabel">TREASURIES (UST)</div>
-          <div class="tsy-row"><div><div class="tsy-name">UST 2Y</div><div class="tsy-desc">Corto plazo · Fed sensible</div></div><div class="tsy-right"><div class="tsy-yield val-down">3.71%</div><div class="tsy-chg val-down">-18 bps</div></div></div>
-          <div class="tsy-row"><div><div class="tsy-name">UST 5Y</div><div class="tsy-desc">Vencimiento intermedio</div></div><div class="tsy-right"><div class="tsy-yield val-down">3.84%</div><div class="tsy-chg val-down">-14 bps</div></div></div>
-          <div class="tsy-row"><div><div class="tsy-name">UST 10Y</div><div class="tsy-desc">Referencia global</div></div><div class="tsy-right"><div class="tsy-yield val-down">4.00%</div><div class="tsy-chg val-down">-9 bps</div></div></div>
-          <div class="tsy-row"><div><div class="tsy-name">UST 30Y</div><div class="tsy-desc">Largo plazo · inflación</div></div><div class="tsy-right"><div class="tsy-yield val-down">4.41%</div><div class="tsy-chg val-down">-6 bps</div></div></div>
-          <div class="curve-note">
-            <strong>Curva en bull steepening:</strong> El 2Y cae más que el 10Y — el mercado está descontando recortes de tasas ante el riesgo de recesión por aranceles. Flight to safety clásico.
-          </div>
-        </div>
-      </div>
-
-      <!-- ⑨ Argentina Panel -->
+      <!-- ⑤ 🇦🇷 Argentina — dolarapi.com en tiempo real -->
       <div class="rv-panel wide fade-in">
         <div class="rv-panel-head">
-          <div class="rv-panel-title">🇦🇷 Argentina <span>· tipos de cambio · bonos · tasas</span></div>
-          <div class="rv-update">Datos locales</div>
+          <div class="rv-panel-title">🇦🇷 Argentina <span>· tipos de cambio en tiempo real</span></div>
+          <div id="ar-update-time" class="rv-update">Cargando...</div>
         </div>
         <div class="rv-body">
-          <div class="rv-sublabel">TIPOS DE DÓLAR</div>
-          <div class="ar-dolar-grid" style="margin-bottom:1.1rem;">
-            <div class="ar-dolar-item"><div class="ar-dolar-type">Oficial</div><div class="ar-dolar-val val-neutral">$1,072</div><div class="ar-dolar-chg val-neutral">Crawling peg</div></div>
-            <div class="ar-dolar-item"><div class="ar-dolar-type">MEP / Bolsa</div><div class="ar-dolar-val val-up">$1,138</div><div class="ar-dolar-chg val-up">+6.2% vs oficial</div></div>
-            <div class="ar-dolar-item"><div class="ar-dolar-type">CCL</div><div class="ar-dolar-val val-up">$1,155</div><div class="ar-dolar-chg val-up">+7.7% vs oficial</div></div>
-            <div class="ar-dolar-item"><div class="ar-dolar-type">Blue</div><div class="ar-dolar-val val-up">$1,160</div><div class="ar-dolar-chg val-up">+8.2% brecha</div></div>
-            <div class="ar-dolar-item"><div class="ar-dolar-type">Tarjeta</div><div class="ar-dolar-val val-neutral">$1,716</div><div class="ar-dolar-chg">+60% recargo</div></div>
+          <div class="rv-sublabel">TIPOS DE DÓLAR · Fuente: dolarapi.com</div>
+          <div id="ar-dolar-grid" class="ar-dolar-grid" style="margin-bottom:1.25rem;">
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Oficial</div><div id="ar-oficial-val" class="ar-dolar-val">—</div><div id="ar-oficial-sub" class="ar-dolar-chg" style="color:var(--muted)">cargando...</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">MEP / Bolsa</div><div id="ar-bolsa-val" class="ar-dolar-val">—</div><div id="ar-bolsa-sub" class="ar-dolar-chg" style="color:var(--muted)">cargando...</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">CCL</div><div id="ar-ccl-val" class="ar-dolar-val">—</div><div id="ar-ccl-sub" class="ar-dolar-chg" style="color:var(--muted)">cargando...</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Blue</div><div id="ar-blue-val" class="ar-dolar-val">—</div><div id="ar-blue-sub" class="ar-dolar-chg" style="color:var(--muted)">cargando...</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Tarjeta</div><div id="ar-tarjeta-val" class="ar-dolar-val">—</div><div id="ar-tarjeta-sub" class="ar-dolar-chg" style="color:var(--muted)">cargando...</div></div>
+            <div class="ar-dolar-item"><div class="ar-dolar-type">Cripto</div><div id="ar-cripto-val" class="ar-dolar-val">—</div><div id="ar-cripto-sub" class="ar-dolar-chg" style="color:var(--muted)">cargando...</div></div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
             <div>
@@ -1363,120 +1232,28 @@
             <div>
               <div class="rv-sublabel">TASAS &amp; RENDIMIENTOS LOCALES</div>
               <div class="ar-rates-grid">
-                <div class="ar-rate-item">
-                  <div class="ar-rate-name">Plazo Fijo</div>
-                  <div class="ar-rate-desc">TNA promedio bancos</div>
-                  <div class="ar-rate-val">29.0%</div>
-                  <div class="ar-rate-sub">≈ 2.4% mensual</div>
-                </div>
-                <div class="ar-rate-item">
-                  <div class="ar-rate-name">LECAP</div>
-                  <div class="ar-rate-desc">Letra capitalizable</div>
-                  <div class="ar-rate-val">31.5%</div>
-                  <div class="ar-rate-sub">TNA · corto plazo</div>
-                </div>
-                <div class="ar-rate-item">
-                  <div class="ar-rate-name">FCI MM</div>
-                  <div class="ar-rate-desc">Fondos liquidez T+0</div>
-                  <div class="ar-rate-val">28.4%</div>
-                  <div class="ar-rate-sub">TNA promedio</div>
-                </div>
-                <div class="ar-rate-item">
-                  <div class="ar-rate-name">Inflación</div>
-                  <div class="ar-rate-desc">IPC mensual Mar'25</div>
-                  <div class="ar-rate-val" style="color:var(--red)">3.7%</div>
-                  <div class="ar-rate-sub">≈ 54% anual</div>
-                </div>
+                <div class="ar-rate-item"><div class="ar-rate-name">Plazo Fijo</div><div class="ar-rate-desc">TNA promedio bancos</div><div class="ar-rate-val">29.0%</div><div class="ar-rate-sub">≈ 2.4% mensual</div></div>
+                <div class="ar-rate-item"><div class="ar-rate-name">LECAP</div><div class="ar-rate-desc">Letra capitalizable</div><div class="ar-rate-val">31.5%</div><div class="ar-rate-sub">TNA · corto plazo</div></div>
+                <div class="ar-rate-item"><div class="ar-rate-name">FCI MM</div><div class="ar-rate-desc">Fondos liquidez T+0</div><div class="ar-rate-val">28.4%</div><div class="ar-rate-sub">TNA promedio</div></div>
+                <div class="ar-rate-item"><div class="ar-rate-name">Inflación</div><div class="ar-rate-desc">IPC mensual Mar'25</div><div class="ar-rate-val" style="color:var(--red)">3.7%</div><div class="ar-rate-sub">≈ 54% anual</div></div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ⑩ Earnings Calendar -->
-      <div class="rv-panel fade-in">
+      <!-- ⑥ Calendario Económico TradingView -->
+      <div class="rv-panel wide fade-in">
         <div class="rv-panel-head">
-          <div class="rv-panel-title">Earnings Calendar <span>· próximas semanas</span></div>
+          <div class="rv-panel-title">Calendario Económico <span>· eventos macro globales en tiempo real</span></div>
+          <div class="rv-update">Tiempo real</div>
         </div>
-        <div class="rv-body">
-          <div class="cal-row">
-            <div class="cal-date">07 Abr</div>
-            <div style="flex:1"><div class="cal-title">LEVI · Levi Strauss</div><div class="cal-desc">Impacto aranceles en cadena de suministro Asia. Guidance clave.</div></div>
-            <span class="cal-impact imp-med">Med</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">11 Abr</div>
-            <div style="flex:1"><div class="cal-title">JPM · JP Morgan</div><div class="cal-desc">Apertura oficial earnings season bancos. NII, reservas y outlook.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">11 Abr</div>
-            <div style="flex:1"><div class="cal-title">WFC · Wells Fargo</div><div class="cal-desc">Calidad de crédito y perspectiva de tasas post-aranceles.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">14 Abr</div>
-            <div style="flex:1"><div class="cal-title">GS · Goldman Sachs</div><div class="cal-desc">Investment banking, trading revenues y exposición a bonos soberanos.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">23 Abr</div>
-            <div style="flex:1"><div class="cal-title">TSLA · Tesla</div><div class="cal-desc">Márgenes auto, Cybertruck, FSD progress y timelines de Robotaxi.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">29 Abr</div>
-            <div style="flex:1"><div class="cal-title">META · Meta Platforms</div><div class="cal-desc">Ad revenue, Llama 4 progress, Reality Labs losses y Capex guidance.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">30 Abr</div>
-            <div style="flex:1"><div class="cal-title">MSFT · Microsoft</div><div class="cal-desc">Azure growth, Copilot monetization, AI capex vs. retorno esperado.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ⑪ Economic Calendar -->
-      <div class="rv-panel fade-in">
-        <div class="rv-panel-head">
-          <div class="rv-panel-title">Economic Calendar <span>· eventos macro clave</span></div>
-        </div>
-        <div class="rv-body">
-          <div class="cal-row">
-            <div class="cal-date">07 Abr</div>
-            <div style="flex:1"><div class="cal-title">Fed Minutes</div><div class="cal-desc">Actas de la última reunión del FOMC. Señales sobre recortes ante contexto arancelario.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">10 Abr</div>
-            <div style="flex:1"><div class="cal-title">CPI EE.UU. — Marzo</div><div class="cal-desc">Inflación de consumo. Consensus: +2.6% YoY. Clave post-aranceles.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">11 Abr</div>
-            <div style="flex:1"><div class="cal-title">PPI EE.UU. — Marzo</div><div class="cal-desc">Inflación mayorista. Indicador adelantado de presión en cadena de precios.</div></div>
-            <span class="cal-impact imp-med">Med</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">16 Abr</div>
-            <div style="flex:1"><div class="cal-title">Retail Sales EE.UU.</div><div class="cal-desc">Consumo privado Marzo. Primer dato de demanda post-anuncio aranceles.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">17 Abr</div>
-            <div style="flex:1"><div class="cal-title">Powell — Discurso</div><div class="cal-desc">Presidente de la Fed ante el Economic Club of Chicago. Tono clave para el mercado.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">30 Abr</div>
-            <div style="flex:1"><div class="cal-title">GDP EE.UU. Q1 — Prelim.</div><div class="cal-desc">Primera lectura del PBI del primer trimestre. Consensus: +1.2% annualized.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
-          </div>
-          <div class="cal-row">
-            <div class="cal-date">07 May</div>
-            <div style="flex:1"><div class="cal-title">Reunión FOMC — Decisión</div><div class="cal-desc">Mercado no descuenta cambio en tasas pero el forward guidance post-aranceles es todo.</div></div>
-            <span class="cal-impact imp-high">Alto</span>
+        <div style="height:500px;">
+          <div class="tradingview-widget-container" style="height:100%;">
+            <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+            {"colorTheme":"dark","isTransparent":true,"locale":"es","importanceFilter":"0,1","countryFilter":"us,ar,eu,gb,jp,cn","width":"100%","height":"500"}
+            </script>
           </div>
         </div>
       </div>
@@ -1484,7 +1261,7 @@
     </div><!-- /grid -->
 
     <div class="radar-disclaimer fade-in">
-      <strong>⚠ Aviso importante:</strong> Todos los datos del dashboard son ilustrativos y corresponden al cierre del viernes 4 de abril de 2025. No constituyen recomendación de inversión. Invertir en mercados financieros implica riesgo de pérdida parcial o total del capital. Consultá siempre con un asesor antes de tomar decisiones de inversión. Fuentes de referencia: Bloomberg, Finviz, Rendimientos.co, BCRA, INDEC.
+      <strong>⚠ Aviso:</strong> Cotizaciones provistas por TradingView y dolarapi.com. Los datos tienen retardos variables según el instrumento. No constituyen recomendación de inversión. Invertir implica riesgo de pérdida de capital.
     </div>
   </div>
 </section>
@@ -1873,6 +1650,49 @@
       card.style.display = (cat === 'all' || (card.dataset.cat || '').includes(cat)) ? '' : 'none';
     });
   }
+
+  // ── DOLAR ARGENTINA (dolarapi.com) ──
+  const AR_MAP = {
+    oficial: { val: 'ar-oficial-val', sub: 'ar-oficial-sub', label: 'Crawling peg' },
+    bolsa:   { val: 'ar-bolsa-val',   sub: 'ar-bolsa-sub',   label: 'MEP' },
+    contadoconliqui: { val: 'ar-ccl-val', sub: 'ar-ccl-sub', label: 'CCL' },
+    blue:    { val: 'ar-blue-val',    sub: 'ar-blue-sub',    label: 'Informal' },
+    tarjeta: { val: 'ar-tarjeta-val', sub: 'ar-tarjeta-sub', label: '+60% recargo' },
+    cripto:  { val: 'ar-cripto-val',  sub: 'ar-cripto-sub',  label: 'Cripto' }
+  };
+  function fmtARS(n) { return n ? '$' + Number(n).toLocaleString('es-AR', {minimumFractionDigits:0, maximumFractionDigits:0}) : '—'; }
+  function brechaVsOficial(venta, oficial) {
+    if (!venta || !oficial) return '';
+    const pct = ((venta - oficial) / oficial * 100).toFixed(1);
+    return pct > 0 ? `+${pct}% vs oficial` : `${pct}% vs oficial`;
+  }
+  async function loadDolarData() {
+    try {
+      const res = await fetch('https://dolarapi.com/v1/dolares');
+      const data = await res.json();
+      let oficial = null;
+      data.forEach(d => { if (d.casa === 'oficial') oficial = d.venta; });
+      data.forEach(d => {
+        const cfg = AR_MAP[d.casa];
+        if (!cfg) return;
+        const valEl = document.getElementById(cfg.val);
+        const subEl = document.getElementById(cfg.sub);
+        if (valEl) valEl.textContent = fmtARS(d.venta);
+        if (subEl) {
+          if (d.casa === 'oficial') { subEl.textContent = 'Venta: ' + fmtARS(d.venta); subEl.style.color = ''; }
+          else { const br = brechaVsOficial(d.venta, oficial); subEl.textContent = br; subEl.style.color = br.startsWith('+') ? 'var(--red)' : 'var(--green)'; }
+        }
+      });
+      const now = new Date();
+      const timeEl = document.getElementById('ar-update-time');
+      if (timeEl) timeEl.textContent = 'Actualizado ' + now.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+    } catch(e) {
+      const timeEl = document.getElementById('ar-update-time');
+      if (timeEl) timeEl.textContent = 'Sin conexión';
+    }
+  }
+  loadDolarData();
+  setInterval(loadDolarData, 5 * 60 * 1000); // refresca cada 5 min
 
   // ── FADE-IN ON SCROLL ──
   const observer = new IntersectionObserver(
