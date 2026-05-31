@@ -653,7 +653,40 @@
           <div>
             <span class="pill blue">📌 Más reciente</span>
           </div>
-          <div class="reporte-date">Dom 06 Abr 2026</div>
+          <div class="reporte-date">Vie 29 May 2026</div>
+        </div>
+        <div class="reporte-body">
+          <div class="reporte-title">Wall Street en máximos históricos: IA y semiconductores marcan el ritmo</div>
+          <div class="reporte-summary">El S&P 500 cerró la semana en 7.580 pts y el Nasdaq tocó récords en 26.247, impulsados por semiconductores e IA. El MERVAL tuvo su mejor jornada del año con +5.05%, mientras el petróleo se mantiene elevado por tensiones en el Estrecho de Ormuz.</div>
+          <div class="reporte-minis">
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">S&P 500</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">7.580</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">Nasdaq</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">26.247</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">MERVAL</div>
+              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+5.05%</div>
+            </div>
+            <div class="reporte-mini">
+              <div class="reporte-mini-lbl">WTI</div>
+              <div class="val-neutral" style="font-family:var(--mono);font-size:.72rem;font-weight:700">~USD 96</div>
+            </div>
+          </div>
+        </div>
+        <div class="reporte-footer">
+          <span class="pill">IA · Geopolítica · Merval</span>
+          <a href="#" class="read-link" onclick="openModal('r1');return false;">Leer completo →</a>
+        </div>
+      </div>
+
+      <div class="reporte-card fade-in" style="transition-delay:.08s">
+        <div class="reporte-head">
+          <span class="pill">Dom 06 Abr 2026</span>
+          <div class="reporte-date"></div>
         </div>
         <div class="reporte-body">
           <div class="reporte-title">Semana Santa: oro en máximos históricos y tensión con Irán definen el rumbo</div>
@@ -679,7 +712,7 @@
         </div>
         <div class="reporte-footer">
           <span class="pill">Geopolítica · Irán · NFP</span>
-          <a href="#" class="read-link" onclick="openModal('r1');return false;">Leer completo →</a>
+          <a href="#" class="read-link" onclick="openModal('r2');return false;">Leer completo →</a>
         </div>
       </div>
 
@@ -708,38 +741,10 @@
         </div>
         <div class="reporte-footer">
           <span class="pill">Macro · Aranceles</span>
-          <a href="#" class="read-link" onclick="openModal('r2');return false;">Leer completo →</a>
-        </div>
-      </div>
-
-      <div class="reporte-card fade-in" style="transition-delay:.16s">
-        <div class="reporte-head">
-          <span class="pill">Jue 03 Abr 2025</span>
-          <div class="reporte-date"></div>
-        </div>
-        <div class="reporte-body">
-          <div class="reporte-title">Jobs report mixto: NFP mejor de lo esperado, pero salarios moderan</div>
-          <div class="reporte-summary">El informe de empleo de marzo mostró 228K nóminas no agrícolas vs. 140K esperados. Sin embargo, los salarios crecieron por debajo de lo estimado. La Fed mantiene su postura de esperar más datos antes de bajar tasas. Tech rebotó levemente, energía sostuvo.</div>
-          <div class="reporte-minis">
-            <div class="reporte-mini">
-              <div class="reporte-mini-lbl">S&P 500</div>
-              <div class="val-up" style="font-family:var(--mono);font-size:.72rem;font-weight:700">+0.74%</div>
-            </div>
-            <div class="reporte-mini">
-              <div class="reporte-mini-lbl">10Y UST</div>
-              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">4.05%</div>
-            </div>
-            <div class="reporte-mini">
-              <div class="reporte-mini-lbl">DXY</div>
-              <div class="val-down" style="font-family:var(--mono);font-size:.72rem;font-weight:700">-0.42%</div>
-            </div>
-          </div>
-        </div>
-        <div class="reporte-footer">
-          <span class="pill">Macro · Fed · Empleo</span>
           <a href="#" class="read-link" onclick="openModal('r3');return false;">Leer completo →</a>
         </div>
       </div>
+
 
     </div>
   </div>
@@ -1380,6 +1385,45 @@
   // ── REPORT DATA ──
   const REPORTS = {
     r1: {
+      tag: 'Reporte Diario · Vie 29 May 2026',
+      title: 'Wall Street en máximos históricos: IA y semiconductores marcan el ritmo',
+      meta: 'Apertura de mercado · Publicado: 29 May 2026 · 09:00 hs',
+      body: `
+        <div class="modal-section">
+          <div class="modal-section-title">// resumen ejecutivo</div>
+          <p class="modal-text">El S&P 500 cerró la semana en <strong>7.580 puntos</strong> y el Nasdaq 100 marcó nuevos máximos históricos en 26.247 — impulsados por el sector de semiconductores e inteligencia artificial. <strong>Micron alcanzó el billón de dólares de capitalización</strong>, sumándose al selecto club de las mega-caps de IA.</p>
+          <p class="modal-text">La geopolítica sigue en primer plano: las negociaciones entre EEUU e Irán para reabrir el Estrecho de Ormuz generan volatilidad en el petróleo. El anuncio de Trump de un acuerdo "ampliamente negociado" redujo la presión alcista en el crudo, pero la incertidumbre persiste con el WTI en torno a los USD 96.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// números clave del día</div>
+          <div class="modal-metrics-grid">
+            <div class="modal-metric"><div class="modal-metric-lbl">S&P 500</div><div class="modal-metric-val val-up">7.580 pts</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Nasdaq 100</div><div class="modal-metric-val val-up">26.247 pts</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">VIX</div><div class="modal-metric-val val-neutral">16.67</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">MERVAL</div><div class="modal-metric-val val-up">3.072.068 pts</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Oro XAU/USD</div><div class="modal-metric-val val-up">USD 4.507</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">WTI Oil</div><div class="modal-metric-val val-neutral">~USD 96</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Dólar Blue</div><div class="modal-metric-val val-neutral">$1.440</div></div>
+            <div class="modal-metric"><div class="modal-metric-lbl">Dólar MEP</div><div class="modal-metric-val val-neutral">$1.430</div></div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// qué pasó exactamente</div>
+          <p class="modal-text">La semana estuvo dominada por el <strong>rally de los semiconductores</strong>. Micron alcanzó capitalización de un billón de dólares gracias a su rol central en el ecosistema de IA — la escasez de memoria de alta velocidad (HBM) lo convirtió en uno de los activos más buscados del sector. El Nasdaq marcó récord histórico con tech liderando todas las categorías.</p>
+          <p class="modal-text">En el frente geopolítico, <strong>el Estrecho de Ormuz sigue siendo el factor de riesgo clave</strong>. Irán bloqueó el tráfico marítimo desde fines de febrero. El potencial acuerdo de paz reduce la prima de riesgo en el petróleo, pero los precios siguen elevados cerca de los USD 96 por barril. La reapertura del estrecho podría comprimir el crudo hacia los USD 70-80.</p>
+          <p class="modal-text">En Argentina, el MERVAL tuvo <strong>su mejor jornada del año con +5.05%</strong> en pesos. El rally fue generalizado, liderado por bancos y energéticas: Supervielle (+9.44%), Comercial del Plata (+8.64%) y Metrogas (+8.12%) encabezaron los avances. El tipo de cambio se mantiene estable dentro de la banda de flotación.</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// lo que hay que seguir</div>
+          <div class="modal-highlight warn"><strong>Ormuz y el petróleo:</strong> Cualquier confirmación del acuerdo de paz con Irán puede comprimir fuertemente el WTI. Eso beneficiaría a la economía global (menor inflación energética) pero golpearía al sector energía del S&P 500, que lleva desempeño superior en 2026.</div>
+          <div class="modal-highlight" style="margin-top:.75rem;"><strong>Inflación argentina:</strong> La tasa bajó a 32.4% anual en abril (desde 32.6% en marzo). El FMI proyecta 26% para 2026. El tipo de cambio dentro de la banda de flotación sigue siendo el ancla clave del programa.</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">// conclusión</div>
+          <p class="modal-text">Wall Street está en zona de máximos históricos con el VIX en 16.67 — un nivel de calma que contrasta con el ruido geopolítico de fondo. El mercado está apostando a que la IA y los semiconductores justifican las valuaciones actuales. <strong>El riesgo principal sigue siendo el petróleo y cualquier escalada en Oriente Medio.</strong> Para Argentina, el MERVAL muestra momentum positivo y el tipo de cambio, estabilidad — los dos ingredientes que el mercado local necesita para seguir subiendo.</p>
+        </div>`
+    },
+    r2: {
       tag: 'Reporte Diario · Dom 06 Abr 2026',
       title: 'Semana Santa: oro en máximos históricos y tensión con Irán definen el rumbo',
       meta: 'Apertura de mercado · Publicado: 06 Abr 2026 · 09:00 hs',
@@ -1427,7 +1471,7 @@
           <p class="modal-text">El mercado global está en modo "wait and see" con un trasfondo geopolítico que no cede. El S&P 500 aguanta gracias a la resiliencia energética y del empleo, pero el tech sigue bajo presión. <strong>La semana que viene es clave para Argentina</strong> — el FMI puede ser el catalizador positivo que el mercado local necesita.</p>
         </div>`
     },
-    r2: {
+    r3: {
       tag: 'Reporte Diario · Vie 04 Abr 2025',
       title: 'Mercado bajo presión: aranceles de Trump sacuden a Wall Street',
       meta: 'Apertura de mercado · Publicado: 04 Abr 2025 · 08:30 hs',
@@ -1468,41 +1512,6 @@
         <div class="modal-section">
           <div class="modal-section-title">// conclusión</div>
           <p class="modal-text">El mercado no está en modo <em>buy the dip</em> todavía. El contexto macro cambió de golpe. <strong>Paciencia, gestión del riesgo y liquidez son la prioridad</strong> en este entorno. Los refugios (oro, treasuries, consumo básico, salud) muestran el camino que está tomando el capital institucional.</p>
-        </div>`
-    },
-    r3: {
-      tag: 'Reporte Diario · Jue 03 Abr 2025',
-      title: 'Jobs report mixto: NFP mejor de lo esperado, pero salarios moderan',
-      meta: 'Apertura de mercado · Publicado: 03 Abr 2025 · 08:30 hs',
-      body: `
-        <div class="modal-section">
-          <div class="modal-section-title">// resumen ejecutivo</div>
-          <p class="modal-text">El informe de empleo de marzo mostró <strong>228K nóminas no agrícolas</strong> contra las 140K del consensus — un beat importante. Pero los salarios promedio por hora crecieron +0.25% mensual vs. +0.3% esperado, lo que moderó el entusiasmo inicial.</p>
-          <p class="modal-text">El mercado leyó el dato como <strong>Goldilocks moderado</strong>: suficiente empleo para alejar el fantasma de recesión, pero salarios que no presionan inflación. La tasa de desempleo quedó en 4.2%, sin cambios.</p>
-        </div>
-        <div class="modal-section">
-          <div class="modal-section-title">// números clave del día</div>
-          <div class="modal-metrics-grid">
-            <div class="modal-metric"><div class="modal-metric-lbl">NFP Mar</div><div class="modal-metric-val val-up">228K</div></div>
-            <div class="modal-metric"><div class="modal-metric-lbl">Consensus</div><div class="modal-metric-val">140K</div></div>
-            <div class="modal-metric"><div class="modal-metric-lbl">Desempleo</div><div class="modal-metric-val val-neutral">4.2%</div></div>
-            <div class="modal-metric"><div class="modal-metric-lbl">Salarios MoM</div><div class="modal-metric-val val-neutral">+0.25%</div></div>
-            <div class="modal-metric"><div class="modal-metric-lbl">S&P 500</div><div class="modal-metric-val val-up">+0.74%</div></div>
-            <div class="modal-metric"><div class="modal-metric-lbl">UST 10Y</div><div class="modal-metric-val val-down">4.05%</div></div>
-            <div class="modal-metric"><div class="modal-metric-lbl">DXY</div><div class="modal-metric-val val-down">-0.42%</div></div>
-          </div>
-        </div>
-        <div class="modal-section">
-          <div class="modal-section-title">// lectura del dato</div>
-          <p class="modal-text">La fortaleza del empleo viene impulsada por servicios de salud (+54K), gobierno (+19K) y leisure & hospitality (+43K). El sector manufacturero perdió -1K empleos — señal temprana de que la incertidumbre arancelaria ya está frenando contrataciones en industria.</p>
-          <p class="modal-text"><strong>La Fed no va a cambiar su postura con este dato.</strong> Powell había dicho que necesita ver más progreso en inflación antes de bajar tasas. Un empleo fuerte pero sin presión salarial no cambia el cálculo. El mercado sigue descontando 2 recortes en 2025, con el primero en septiembre.</p>
-          <div class="modal-highlight">
-            <strong>Nota importante:</strong> Este dato fue publicado antes del anuncio arancelario del jueves a la noche. En el contexto post-aranceles del viernes, el NFP ya quedó viejo. El foco total del mercado pasó al impacto en crecimiento e inflación de los nuevos aranceles.
-          </div>
-        </div>
-        <div class="modal-section">
-          <div class="modal-section-title">// lo que viene</div>
-          <p class="modal-text">El próximo dato grande es el <strong>CPI de marzo (10 de abril)</strong>. Si los precios al consumidor suben más de lo esperado, la Fed queda entre la espada y la pared: inflación que pide tasas altas, crecimiento que pide tasas bajas. Ese es el escenario que más le complica el trabajo a Powell.</p>
         </div>`
     },
     rs1: {
